@@ -104,6 +104,7 @@ public class Drivetrain extends Subsystem {
     // double leftPercentForward = leftPercent ;
 		// double rightPercentForward = rightPercent ;
     
+    
     //set motor controllers to percents
     System.out.println("left " + leftPercentForward);
     System.out.println("right " + rightPercentForward);
