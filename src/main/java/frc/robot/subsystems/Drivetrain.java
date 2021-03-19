@@ -69,10 +69,10 @@ public class Drivetrain extends Subsystem {
     // frontLeftController = new CANSparkMax(2, MotorType.kBrushless);
     // backRightController = new CANSparkMax(4, MotorType.kBrushless);
     // backLeftController = new CANSparkMax(3, MotorType.kBrushless);
-    frontRightController = new TalonSRX(1);
-    frontLeftController = new TalonSRX(2);
-    backRightController = new TalonSRX(4);
-    backLeftController = new TalonSRX(3);
+    frontRightController = new TalonSRX(7);
+    frontLeftController = new TalonSRX(1);
+    backRightController = new TalonSRX(3);
+    backLeftController = new TalonSRX(2);
     //spark = new CANSparkMax(5, MotorType.kBrushless);
     
     //pid
@@ -110,6 +110,8 @@ public class Drivetrain extends Subsystem {
     System.out.println("right " + rightPercentForward);
     frontLeftController.set(ControlMode.PercentOutput, leftPercentForward);
 		frontRightController.set(ControlMode.PercentOutput, rightPercentForward);
+    SmartDashboard.putNumber("left ", leftPercentForward);
+    SmartDashboard.putNumber("right ", rightPercentForward);
   }
 
 

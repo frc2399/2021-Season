@@ -71,24 +71,34 @@ public class OI {
   public Command defaultDrive() {
 		return defaultDrive;
   }
+
+  public double getAxis(int axis) 
+  {
+		double val = xBox.getRawAxis(axis);
+		if (Math.abs(val) <= DEADBAND_WIDTH) {
+			val = 0.0;
+		}
+    val = Math.pow(val, 3);
+		return val;
+	}
   
   public double leftYAxis(){
-    leftY = xBox.getRawAxis(1) * -1;
+    leftY = this.getAxis(1) * -1;
     return leftY;
   }
 
   public double rightYAxis(){
-    rightY = xBox.getRawAxis(5) * -1;
+    rightY = this.getAxis(5) * -1;
     return rightY;
   }
 
   public double rightXAxis(){
-    rightX = xBox.getRawAxis(4) * 1;
+    rightX = this.getAxis(4) * 1;
     return rightX;
   }
 
   public double leftShoulder(){
-    leftShoulder = xBox.getRawAxis(2) * 1;
+    leftShoulder = this.getAxis(2) * 1;
     return leftShoulder;
   }
 
