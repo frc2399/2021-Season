@@ -17,6 +17,7 @@ public class IntakeBall extends Command {
     Intake in;
     OI oi;
 	double percent;
+    String s = "Maisie";
     
     //constructor
 	public IntakeBall(Intake intake, OI operatorInterface, double per) {
