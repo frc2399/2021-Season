@@ -39,7 +39,7 @@ public class IntakeDefault extends Command {
     protected void execute() {
         //set intake speed to 0
         in.setIntakeSpeed(0);
-        in.retractIntake();
+        //in.retractIntake();
     }
 
     // Make this return true when this Command no longer needs to run execute()
