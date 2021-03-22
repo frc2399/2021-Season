@@ -17,7 +17,7 @@ public class IntakeBall extends Command {
     Intake in;
     OI oi;
 	double percent;
-    String s = "Maisie";
+    
     
     //constructor
 	public IntakeBall(Intake intake, OI operatorInterface, double per) {
@@ -42,6 +42,7 @@ public class IntakeBall extends Command {
     protected void execute() {
         //set speed to run intake
         in.setIntakeSpeed(percent);
+        System.out.println("hi");
     }
 
     // Make this return true when this Command no longer needs to run execute()

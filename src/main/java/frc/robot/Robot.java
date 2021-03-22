@@ -51,7 +51,7 @@ public class Robot extends TimedRobot {
     //initialize variables
     dt = new Drivetrain();
     // sh = new Shooter();
-    // in = new Intake();
+    in = new Intake();
     // ind = new Indexer();
     oi = new OI(dt, sh, in, ind);
 
@@ -62,7 +62,7 @@ public class Robot extends TimedRobot {
     //sh.initDefaultCommand(new ShootDefault(sh, oi));
     
     //set default command for intake to default shoot
-    //in.initDefaultCommand(new IntakeDefault(in, oi));
+    in.initDefaultCommand(new IntakeDefault(in, oi));
 
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
     NetworkTable table = inst.getTable("database");

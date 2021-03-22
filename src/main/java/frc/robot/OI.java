@@ -24,19 +24,21 @@ public class OI {
   private Command defaultDrive;
   Joystick xBox;
   Button[] xBoxButtons;
+  Button[] joystickButton;
   double leftShoulder;
   double rightShoulder;
   double leftY;
   double rightY;
   double rightX;
 
+  Joystick joystick;
   public static final double DEADBAND_WIDTH = 0.1;
 
   //constructor (takes drive train)
   public OI(Drivetrain dt, Shooter sh, Intake in, Indexer ind) {
     
     //initialize variables
-    xBox = new Joystick(0);
+    xBox = new Joystick(1);
     xBoxButtons = getButtons(xBox);
 
     //defaultDrive = new TankDrive(dt, this);
@@ -48,8 +50,10 @@ public class OI {
   //  xBoxButtons[4].whileHeld(new ShootConstant(sh, this, 0.75, 0.75));
 
     //xBoxButtons[5].whileHeld(new ShootManual(sh, this));
-    //xBoxButtons[1].whileHeld(new IntakeBall(in, this, 1));
-    //xBoxButtons[2].whileHeld(new IntakeBall(in, this, -1));
+    joystick = new Joystick(0);
+    joystickButton = getButtons(joystick);
+    joystickButton[1].whileHeld(new IntakeBall(in, this, 1));
+    joystickButton[2].whileHeld(new IntakeBall(in, this, -1));
 
     //xBoxButtons[6].whenPressed(new ExtendIntake(in, this));
     //xBoxButtons[6].whenPressed(new RetractIntake(in, this));
