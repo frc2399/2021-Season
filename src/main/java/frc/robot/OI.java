@@ -55,8 +55,8 @@ public class OI {
     joystickButton[1].whileHeld(new IntakeBall(in, this, 1));
     joystickButton[2].whileHeld(new IntakeBall(in, this, -1));
 
-    //xBoxButtons[6].whenPressed(new ExtendIntake(in, this));
-    //xBoxButtons[6].whenPressed(new RetractIntake(in, this));
+    joystickButton[5].whenPressed(new ExtendIntake(in, this));
+    joystickButton[6].whenPressed(new RetractIntake(in, this));
 
     // xBoxButtons[1].whileHeld(new IndexTowardsShooter(ind, this));
     // xBoxButtons[2].whileHeld(new IndexAwayShooter(ind, this));

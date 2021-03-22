@@ -34,7 +34,7 @@ public class Intake extends Subsystem {
     //victor1 = new VictorSPX(6);    
     
     //initalize double solenoids (pcm, port1, port2)
-    //sol = new DoubleSolenoid(1, 0, 1);
+    sol = new DoubleSolenoid(1, 0, 3);
   }
 
 
