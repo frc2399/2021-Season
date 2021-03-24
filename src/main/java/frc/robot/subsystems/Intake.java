@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -22,19 +23,22 @@ public class Intake extends Subsystem {
   
   //instantiate motor controller
   private TalonSRX talon1;
-  private VictorSPX victor1;
+  public VictorSPX victor1;
 
-  private DoubleSolenoid sol;
+  public DoubleSolenoid sol;
   
   //constructor
   public Intake() {
       
     //initialize motor controller
-    talon1 = new TalonSRX(8);
-    //victor1 = new VictorSPX(6);    
+    //talon1 = new TalonSRX(8);
+    talon1 = RobotMap.INTAKE_MOTOR;
+
+    victor1 = new VictorSPX(6);    
     
     //initalize double solenoids (pcm, port1, port2)
-    sol = new DoubleSolenoid(1, 0, 3);
+    sol = new DoubleSolenoid(RobotMap.SOLENOID_MODULE_ID, RobotMap.SOLENOID_FORWARD_CHANNEL,
+        RobotMap.SOLENOID_REVERSE_CHANNEL);
   }
 
 

@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -29,4 +31,15 @@ public class RobotMap {
 
   public static final int BOTTOM_SHOOTER = 1;
   public static final int TOP_SHOOTER = 1;
+
+  public static TalonSRX DRIVE_TRAIN_LEFT_FRONT_MOTOR = new TalonSRX(1);
+  public static TalonSRX DRIVE_TRAIN_RIGHT_FRONT_MOTOR = new TalonSRX(7);
+  public static TalonSRX DRIVE_TRAIN_BACK_RIGHT_CONTROLLER = new TalonSRX(3);
+  public static TalonSRX DRIVE_TRAIN_BACK_LEFT_CONTROLLER = new TalonSRX(2);
+
+  public static TalonSRX INTAKE_MOTOR = new TalonSRX(8);
+
+  public static int SOLENOID_MODULE_ID = 1;
+  public static int SOLENOID_FORWARD_CHANNEL = 0;
+  public static int SOLENOID_REVERSE_CHANNEL = 3;
 }

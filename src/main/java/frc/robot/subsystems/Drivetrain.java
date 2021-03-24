@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -30,7 +32,7 @@ public class Drivetrain extends Subsystem {
   // private CANSparkMax frontLeftController;
   // private CANSparkMax backRightController;
   // private CANSparkMax backLeftController;
-  private TalonSRX frontRightController;
+  public TalonSRX frontRightController;
   private TalonSRX frontLeftController;
   private TalonSRX backRightController;
   private TalonSRX backLeftController;
@@ -69,11 +71,16 @@ public class Drivetrain extends Subsystem {
     // frontLeftController = new CANSparkMax(2, MotorType.kBrushless);
     // backRightController = new CANSparkMax(4, MotorType.kBrushless);
     // backLeftController = new CANSparkMax(3, MotorType.kBrushless);
-    frontRightController = new TalonSRX(7);
-    frontLeftController = new TalonSRX(1);
-    backRightController = new TalonSRX(3);
-    backLeftController = new TalonSRX(2);
+    //frontRightController = new TalonSRX(7);
+    //frontLeftController = new TalonSRX(1);
+    //backRightController = new TalonSRX(3);
+    //backLeftController = new TalonSRX(2);
     //spark = new CANSparkMax(5, MotorType.kBrushless);
+    frontLeftController = RobotMap.DRIVE_TRAIN_LEFT_FRONT_MOTOR;
+    frontRightController = RobotMap.DRIVE_TRAIN_RIGHT_FRONT_MOTOR;
+    backRightController = RobotMap.DRIVE_TRAIN_BACK_RIGHT_CONTROLLER;
+    backLeftController = RobotMap.DRIVE_TRAIN_BACK_LEFT_CONTROLLER;
+
     
     //pid
     // pidFrontRight = frontRightController.getPIDController();
