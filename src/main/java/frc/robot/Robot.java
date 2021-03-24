@@ -7,20 +7,31 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.commands.IntakeDefault;
+import frc.robot.commands.RetractIntake;
 import frc.robot.commands.ShootDefault;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
+import edu.wpi.first.wpilibj.smartdashboard.*;
+import edu.wpi.first.wpilibj.livewindow.*;
+import edu.wpi.first.wpilibj.shuffleboard.*;
+import frc.robot.commands.ExtendIntake;
+import frc.robot.commands.IntakeBall;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -47,7 +58,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-
+    
     //initialize variables
     dt = new Drivetrain();
     // sh = new Shooter();
@@ -71,6 +82,22 @@ public class Robot extends TimedRobot {
 
     UsbCamera cam1 = CameraServer.getInstance().startAutomaticCapture();
     cam1.setResolution(321 * 2, 241 * 2);
+
+    SmartDashboard.putData(dt);
+    
+
+    //LiveWindow lw = LiveWindow.getInstance();
+
+    TalonSRX topMotor = RobotMap.DRIVE_TRAIN_RIGHT_FRONT_MOTOR;
+
+    //Shuffleboard.getTab("2399").add("Sendable Title", topMotor);
+    SmartDashboard.putData(in.sol);
+    SmartDashboard.putData("intake", new IntakeBall(in, oi, 1));
+    SmartDashboard.putData("intake default", new IntakeDefault(in, oi));
+    SmartDashboard.putData("extend intake", new ExtendIntake(in, oi));
+    SmartDashboard.putData("retract intake", new RetractIntake(in, oi));
+
+    //lw.addActuator("f", "c", topMotor);
   }
 
   /**
@@ -140,10 +167,17 @@ public class Robot extends TimedRobot {
     // System.out.println("DISTANCE: " + distance);
   }
 
-  /**
+    @Override
+    public void testInit() {
+        teleopInit();
+    }
+
+/**
    * This function is called periodically during test mode.
    */
-  @Override
-  public void testPeriodic() {
-  }
+
+    @Override
+    public void testPeriodic() {
+        teleopPeriodic();
+    }
 }

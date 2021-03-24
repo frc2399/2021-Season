@@ -22,7 +22,7 @@ public class OI {
 
   //instantiate global variables
   private Command defaultDrive;
-  Joystick xBox;
+  public Joystick xBox;
   Button[] xBoxButtons;
   Button[] joystickButton;
   double leftShoulder;
