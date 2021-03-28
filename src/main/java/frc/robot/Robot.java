@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.commands.IntakeDefault;
 import frc.robot.commands.RetractIntake;
 import frc.robot.commands.ShootDefault;
+import frc.robot.commands.driveForwardForOneSecond;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
@@ -32,6 +33,8 @@ import edu.wpi.first.wpilibj.livewindow.*;
 import edu.wpi.first.wpilibj.shuffleboard.*;
 import frc.robot.commands.ExtendIntake;
 import frc.robot.commands.IntakeBall;
+import frc.robot.commands.driveForwardForOneSecond;
+import edu.wpi.first.wpilibj.command.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -48,6 +51,7 @@ public class Robot extends TimedRobot {
   public static OI oi;
   public static Intake in;
   public static Indexer ind;
+  Command autonomousCommand;
 
   NetworkTableEntry xAng, dist;
   double xAngle, distance;
@@ -98,6 +102,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("retract intake", new RetractIntake(in, oi));
 
     //lw.addActuator("f", "c", topMotor);
+
+    // instantiate the command used for the autonomous period
+    autonomousCommand = new driveForwardForOneSecond(dt);
   }
 
   /**
@@ -139,6 +146,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+    // schedule the autonomous command (example)
+    if (autonomousCommand != null) autonomousCommand.start();
   }
 
   /**
