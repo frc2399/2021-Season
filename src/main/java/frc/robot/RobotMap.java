@@ -38,6 +38,7 @@ public class RobotMap {
   public static TalonSRX DRIVE_TRAIN_BACK_LEFT_CONTROLLER = new TalonSRX(2);
 
   public static TalonSRX INTAKE_MOTOR = new TalonSRX(8);
+  
 
   public static int SOLENOID_MODULE_ID = 1;
   public static int SOLENOID_FORWARD_CHANNEL = 0;
