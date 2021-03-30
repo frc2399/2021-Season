@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -18,7 +19,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 public class Indexer extends Subsystem {
 
   //instantiate global variables
-  private TalonSRX motorController;
+  private TalonSRX upperMotorController;
+  private TalonSRX lowerMotorController;
 
   //private CANSparkMax spark;
 
@@ -26,7 +28,8 @@ public class Indexer extends Subsystem {
   public Indexer() {
 
     //initialize variables (motor controllers with IDs)
-    motorController = new TalonSRX(10);
+    upperMotorController = RobotMap.INDEXER_UPPER;
+    lowerMotorController = RobotMap.INDEXER_LOWER;
     //spark = new CANSparkMax(5, MotorType.kBrushless);
   }
 
@@ -34,7 +37,8 @@ public class Indexer extends Subsystem {
  public void index(double spinPercent) {
   //TODO: forward constant, also add definition of forward and backward to OI (-1 or 1)
   double spinPercentActual = spinPercent * 1;
-  motorController.set(ControlMode.PercentOutput, spinPercentActual);
+  upperMotorController.set(ControlMode.PercentOutput, spinPercentActual);
+  lowerMotorController.set(ControlMode.PercentOutput, -1 * spinPercentActual);
  }
   //public void setSpark(double percent){
     //spark.set(percent);
