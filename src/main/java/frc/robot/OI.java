@@ -38,7 +38,7 @@ public class OI {
   public OI(Drivetrain dt, Shooter sh, Intake in, Indexer ind) {
     
     //initialize variables
-    xBox = new Joystick(1);
+    xBox = new Joystick(0);
     xBoxButtons = getButtons(xBox);
 
     //defaultDrive = new TankDrive(dt, this);

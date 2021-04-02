@@ -37,16 +37,16 @@ public class RobotMap {
   public static final int TOP_SHOOTER = 1;
 
   public static CANSparkMax DRIVE_TRAIN_LEFT_FRONT_MOTOR =  new CANSparkMax(1, MotorType.kBrushless);
-  public static CANSparkMax DRIVE_TRAIN_RIGHT_FRONT_MOTOR = new CANSparkMax(2, MotorType.kBrushless);
+  public static CANSparkMax DRIVE_TRAIN_RIGHT_FRONT_MOTOR = new CANSparkMax(3, MotorType.kBrushless);
   public static CANSparkMax DRIVE_TRAIN_BACK_RIGHT_CONTROLLER = new CANSparkMax(4, MotorType.kBrushless);
-  public static CANSparkMax DRIVE_TRAIN_BACK_LEFT_CONTROLLER = new CANSparkMax(3, MotorType.kBrushless);
+  public static CANSparkMax DRIVE_TRAIN_BACK_LEFT_CONTROLLER = new CANSparkMax(2, MotorType.kBrushless);
 
-  public static TalonSRX INTAKE_MOTOR = new TalonSRX(8);
+  // public static TalonSRX INTAKE_MOTOR = new TalonSRX(8);
   
-  public static TalonSRX SHOOTER_UPPER =  new TalonSRX(3);
-  public static TalonSRX SHOOTER_LOWER = new TalonSRX(5);
-  public static TalonSRX INDEXER_UPPER = new TalonSRX(2);
-  public static TalonSRX INDEXER_LOWER = new TalonSRX(6);
+  // public static TalonSRX SHOOTER_UPPER =  new TalonSRX(3);
+  // public static TalonSRX SHOOTER_LOWER = new TalonSRX(5);
+  // public static TalonSRX INDEXER_UPPER = new TalonSRX(2);
+  // public static TalonSRX INDEXER_LOWER = new TalonSRX(6);
 
   public static int SOLENOID_MODULE_ID = 1;
   public static int SOLENOID_FORWARD_CHANNEL = 0;

@@ -28,8 +28,8 @@ public class Indexer extends Subsystem {
   public Indexer() {
 
     //initialize variables (motor controllers with IDs)
-    upperMotorController = RobotMap.INDEXER_UPPER;
-    lowerMotorController = RobotMap.INDEXER_LOWER;
+    // upperMotorController = RobotMap.INDEXER_UPPER;
+    // lowerMotorController = RobotMap.INDEXER_LOWER;
     //spark = new CANSparkMax(5, MotorType.kBrushless);
   }
 

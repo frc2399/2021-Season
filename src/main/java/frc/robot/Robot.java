@@ -84,22 +84,22 @@ public class Robot extends TimedRobot {
     xAng = table.getEntry("xAngle");
     dist = table.getEntry("distance");
 
-    UsbCamera cam1 = CameraServer.getInstance().startAutomaticCapture();
-    cam1.setResolution(321 * 2, 241 * 2);
+    // UsbCamera cam1 = CameraServer.getInstance().startAutomaticCapture();
+    // cam1.setResolution(321 * 2, 241 * 2);
 
-    SmartDashboard.putData(dt);
+    // SmartDashboard.putData(dt);
     
 
     //LiveWindow lw = LiveWindow.getInstance();
 
-    TalonSRX topMotor = RobotMap.DRIVE_TRAIN_RIGHT_FRONT_MOTOR;
+    //TalonSRX topMotor = RobotMap.DRIVE_TRAIN_RIGHT_FRONT_MOTOR;
 
     //Shuffleboard.getTab("2399").add("Sendable Title", topMotor);
-    SmartDashboard.putData(in.sol);
-    SmartDashboard.putData("intake", new IntakeBall(in, oi, 1));
-    SmartDashboard.putData("intake default", new IntakeDefault(in, oi));
-    SmartDashboard.putData("extend intake", new ExtendIntake(in, oi));
-    SmartDashboard.putData("retract intake", new RetractIntake(in, oi));
+    // SmartDashboard.putData(in.sol);
+    // SmartDashboard.putData("intake", new IntakeBall(in, oi, 1));
+    // SmartDashboard.putData("intake default", new IntakeDefault(in, oi));
+    // SmartDashboard.putData("extend intake", new ExtendIntake(in, oi));
+    // SmartDashboard.putData("retract intake", new RetractIntake(in, oi));
 
     //lw.addActuator("f", "c", topMotor);
 

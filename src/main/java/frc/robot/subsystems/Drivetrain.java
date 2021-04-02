@@ -19,7 +19,7 @@ import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.ControlType;
 import com.revrobotics.CANSparkMax.IdleMode;
-// import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 /**
@@ -28,15 +28,15 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 public class Drivetrain extends Subsystem {
 
   //instantiate global variables
-  // private CANSparkMax frontRightController;
-  // private CANSparkMax frontLeftController;
-  // private CANSparkMax backRightController;
-  // private CANSparkMax backLeftController;
-  private TalonSRX frontRightController;
-  private TalonSRX frontLeftController;
-  private TalonSRX backRightController;
-  private TalonSRX backLeftController;
-  //private CANSparkMax spark;
+  private CANSparkMax frontRightController;
+  private CANSparkMax frontLeftController;
+  private CANSparkMax backRightController;
+  private CANSparkMax backLeftController;
+  // private TalonSRX frontRightController;
+  // private TalonSRX frontLeftController;
+  // private TalonSRX backRightController;
+  // private TalonSRX backLeftController;
+  private CANSparkMax spark;
 
   //pidf
   private CANPIDController pidFrontLeft, pidFrontRight;
@@ -67,15 +67,11 @@ public class Drivetrain extends Subsystem {
     //initialize variables (motor controllers with IDs)
 
     //TODO ids
-    // frontRightController = new CANSparkMax(1, MotorType.kBrushless);
-    // frontLeftController = new CANSparkMax(2, MotorType.kBrushless);
-    // backRightController = new CANSparkMax(4, MotorType.kBrushless);
-    // backLeftController = new CANSparkMax(3, MotorType.kBrushless);
     //frontRightController = new TalonSRX(7);
     //frontLeftController = new TalonSRX(1);
     //backRightController = new TalonSRX(3);
     //backLeftController = new TalonSRX(2);
-    //spark = new CANSparkMax(5, MotorType.kBrushless);
+    // spark = new CANSparkMax(5, MotorType.kBrushless);
     frontLeftController = RobotMap.DRIVE_TRAIN_LEFT_FRONT_MOTOR;
     frontRightController = RobotMap.DRIVE_TRAIN_RIGHT_FRONT_MOTOR;
     backRightController = RobotMap.DRIVE_TRAIN_BACK_RIGHT_CONTROLLER;
@@ -92,7 +88,7 @@ public class Drivetrain extends Subsystem {
     backLeftController.follow(frontLeftController);
     backRightController.follow(frontRightController);
 
-    //CANSparkMax[] allMotorControllers = {frontRightController, frontLeftController, backRightController, backLeftController};
+    //  CANSparkMax[] allMotorControllers = {frontRightController, frontLeftController, backRightController, backLeftController};
 
     desiredLeftVelPrev = 0;
 		desiredRightVelPrev = 0;
@@ -113,10 +109,10 @@ public class Drivetrain extends Subsystem {
     
     
     //set motor controllers to percents
-    System.out.println("left " + leftPercentForward);
-    System.out.println("right " + rightPercentForward);
-    frontLeftController.set(ControlMode.PercentOutput, leftPercentForward);
-		frontRightController.set(ControlMode.PercentOutput, rightPercentForward);
+    // System.out.println("left " + leftPercentForward);
+    // System.out.println("right " + rightPercentForward);
+    frontLeftController.set(leftPercentForward);
+		frontRightController.set(rightPercentForward);
     SmartDashboard.putNumber("left ", leftPercentForward);
     SmartDashboard.putNumber("right ", rightPercentForward);
   }

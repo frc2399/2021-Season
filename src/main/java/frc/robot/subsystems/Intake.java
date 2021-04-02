@@ -32,9 +32,9 @@ public class Intake extends Subsystem {
       
     //initialize motor controller
     //talon1 = new TalonSRX(8);
-    talon1 = RobotMap.INTAKE_MOTOR;
+    // talon1 = RobotMap.INTAKE_MOTOR;
 
-    victor1 = new VictorSPX(6);    
+    // victor1 = new VictorSPX(6);    
     
     //initalize double solenoids (pcm, port1, port2)
     sol = new DoubleSolenoid(RobotMap.SOLENOID_MODULE_ID, RobotMap.SOLENOID_FORWARD_CHANNEL,
@@ -44,7 +44,7 @@ public class Intake extends Subsystem {
 
   //set motor speed
   public void setIntakeSpeed(double speed){
-    talon1.set(ControlMode.PercentOutput, speed);
+  //   talon1.set(ControlMode.PercentOutput, speed);
   }
 
   public void extendIntake(){
