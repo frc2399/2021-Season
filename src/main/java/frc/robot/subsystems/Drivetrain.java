@@ -14,14 +14,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
-import com.revrobotics.CANEncoder;
-import com.revrobotics.CANPIDController;
+
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.ControlType;
-import com.revrobotics.CANSparkMax.IdleMode;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.ControlMode;
 /**
  * Drivetrain subsystem.
  */
@@ -32,70 +26,36 @@ public class Drivetrain extends Subsystem {
   private CANSparkMax frontLeftController;
   private CANSparkMax backRightController;
   private CANSparkMax backLeftController;
-  // private TalonSRX frontRightController;
-  // private TalonSRX frontLeftController;
-  // private TalonSRX backRightController;
-  // private TalonSRX backLeftController;
-  private CANSparkMax spark;
-
-  //pidf
-  private CANPIDController pidFrontLeft, pidFrontRight;
-  private CANEncoder eFrontLeft, eFrontRight;
 
   public static final double DRIVETRAIN_KP = 1.875;
 	public static final double DRIVETRAIN_KI = 0.006;
 	public static final double DRIVETRAIN_KD = 52.5;
 	public static final double DRIVETRAIN_KF = 0.15;
 
-  //motor controllers
-  private CANSparkMax[] allMotorControllers;
-
   //private static final double CLOSED_LOOP_VOLTAGE_SATURATION = 10;
   //private static final int CAN_TIMEOUT = 10;
-  //TODO: correct for drivetrain
-	private static final int WHEEL_DIAMETER = 6;
-	private static final int ENCODER_TICKS_PER_REVOLUTION = 4096;
-	private static final double GEAR_RATIO = 1.0 / 1.0;
-  private static final double C_100MS_IN_1S = 10.0;
-
-  private double desiredLeftVelPrev, desiredRightVelPrev, actualLeftVelPrev, actualRightVelPrev;
-  private double fuzz;
 
   //constructor
   public Drivetrain() {
 
     //initialize variables (motor controllers with IDs)
 
-    //TODO ids
-    //frontRightController = new TalonSRX(7);
-    //frontLeftController = new TalonSRX(1);
-    //backRightController = new TalonSRX(3);
-    //backLeftController = new TalonSRX(2);
-    // spark = new CANSparkMax(5, MotorType.kBrushless);
     frontLeftController = RobotMap.DRIVE_TRAIN_LEFT_FRONT_MOTOR;
     frontRightController = RobotMap.DRIVE_TRAIN_RIGHT_FRONT_MOTOR;
     backRightController = RobotMap.DRIVE_TRAIN_BACK_RIGHT_CONTROLLER;
     backLeftController = RobotMap.DRIVE_TRAIN_BACK_LEFT_CONTROLLER;
 
-    
-    //pid
-    // pidFrontRight = frontRightController.getPIDController();
-    // pidFrontLeft = frontLeftController.getPIDController();
-    // eFrontRight = frontRightController.getEncoder();
-    // eFrontLeft = frontLeftController.getEncoder();
+    frontLeftController.setCANTimeout(10);
+    frontRightController.setCANTimeout(10);
+    backRightController.setCANTimeout(10);
+    backLeftController.setCANTimeout(10);
+  
+    frontLeftController.setIdleMode(CANSparkMax.IdleMode.kBrake);
+
 
     //set back motor controllers to follow front motor controllers
     backLeftController.follow(frontLeftController);
     backRightController.follow(frontRightController);
-
-    //  CANSparkMax[] allMotorControllers = {frontRightController, frontLeftController, backRightController, backLeftController};
-
-    desiredLeftVelPrev = 0;
-		desiredRightVelPrev = 0;
-		actualLeftVelPrev = 0;
-		actualRightVelPrev = 0;
-		
-		fuzz = 0.001;
   }
 
   //set motor controllers to percents
@@ -115,109 +75,6 @@ public class Drivetrain extends Subsystem {
 		frontRightController.set(rightPercentForward);
     SmartDashboard.putNumber("left ", leftPercentForward);
     SmartDashboard.putNumber("right ", rightPercentForward);
-  }
-
-
-  //TODO: check these are okay
-  public double toInPerSecFromNativeUnits(double nativeU) {
-    return nativeU * (WHEEL_DIAMETER * (Math.PI / ENCODER_TICKS_PER_REVOLUTION)) * GEAR_RATIO * C_100MS_IN_1S;
-  }
-  
-  public double toNativeUnitsFromInPerSec(double inPerSec) {
-    // 60.0 / 24.0
-    return inPerSec * (ENCODER_TICKS_PER_REVOLUTION / (WHEEL_DIAMETER * Math.PI)) * (1.0 / C_100MS_IN_1S);
-  }
-
-  public void driveVelocity(double leftVelocity, double rightVelocity) {
-    flipFuzz();
-    
-    // double desiredLeftVelocityForward = toNativeTalonFromInPerSec(leftVelocity) * RobotMap.Physical.DriveTrain.LEFT_FORWARD ;
-    // double desiredRightVelocityForward = toNativeTalonFromInPerSec(rightVelocity) * RobotMap.Physical.DriveTrain.RIGHT_FORWARD;
-
-    double desiredLeftVelocityForward = toNativeUnitsFromInPerSec(leftVelocity) * RobotMap.LEFT_DRIVETRAIN;
-    double desiredRightVelocityForward = toNativeUnitsFromInPerSec(rightVelocity) * RobotMap.RIGHT_DRIVETRAIN;
-    
-    pidFrontLeft.setReference(desiredLeftVelocityForward, ControlType.kVelocity);
-    pidFrontRight.setReference(desiredRightVelocityForward, ControlType.kVelocity);
-    // frontLeft.set(ControlMode.Velocity, desiredLeftVelocityForward);
-    // rightBackTalon.set(ControlMode.Velocity, desiredRightVelocityForward);
-    
-    double actualLeftVelocityForward = eFrontLeft.getVelocity();
-    double actualRightVelocityForward = eFrontRight.getVelocity();
-
-    // double actualLeftVelocityForward = leftBackTalon.getSelectedSensorVelocity(0);
-    // double actualRightVelocityForward = rightBackTalon.getSelectedSensorVelocity(0);
-    
-    double[] leftVelocityArr = {desiredLeftVelocityForward, actualLeftVelocityForward, fuzz};
-    double[] rightVelocityArr = {desiredRightVelocityForward, actualRightVelocityForward, fuzz};
-    
-    SmartDashboard.putNumberArray("leftVelocity", leftVelocityArr);
-    SmartDashboard.putNumberArray("rightVelocity", rightVelocityArr);
-    
-    double desiredLeftAccel = desiredLeftVelocityForward - desiredLeftVelPrev;
-    double desiredRightAccel = desiredRightVelocityForward - desiredRightVelPrev;
-    
-    double actualLeftAccel = actualLeftVelocityForward - actualLeftVelPrev;
-    double actualRightAccel = actualRightVelocityForward - actualRightVelPrev;
-    
-    double[] leftAccelArr = {desiredLeftAccel, actualLeftAccel, fuzz};
-    double[] rightAccelArr = {desiredRightAccel, actualRightAccel, fuzz};
-    
-    SmartDashboard.putNumberArray("leftAccel",  leftAccelArr);
-    SmartDashboard.putNumberArray("rightAccel", rightAccelArr);  
-    
-    desiredLeftVelPrev = desiredLeftVelocityForward;
-    desiredRightVelPrev = desiredRightVelocityForward;
-    
-    actualLeftVelPrev = actualLeftVelocityForward;
-    actualRightVelPrev = actualRightVelocityForward;
-  }
-
-  //public void setSpark(double percent){
-    //spark.set(percent);
-  //}
-
-  public void enableVoltageComp() {
-    // for(CANSparkMax c : allMotorControllers) {
-    //   /**
-    //    * TODO: fix
-    //    */
-      
-
-    //   //c.configVoltageCompSaturation(CLOSED_LOOP_VOLTAGE_SATURATION, CAN_TIMEOUT);
-    //   //c.enableVoltageCompensation();
-    // }
-  }
-
-  public void brakeMode() {
-    for(CANSparkMax c : allMotorControllers) {
-      /**
-       * TODO: is idlemode the same as neutralmode?
-       */
-      c.setIdleMode(IdleMode.kBrake);
-    }
-  }
-
-  public void setConstants(double p, double i, double d, double f) {
-    //TODO: need? 
-    //frontLeftController.restoreFactoryDefaults();
-    
-    //TODO: does this do all the things? no nominal or can timeout
-    pidFrontLeft.setP(DRIVETRAIN_KP);
-    pidFrontLeft.setI(DRIVETRAIN_KI);
-    pidFrontLeft.setD(DRIVETRAIN_KD);
-    pidFrontLeft.setFF(DRIVETRAIN_KF);
-    pidFrontLeft.setOutputRange(-1, 1);
-
-    pidFrontRight.setP(DRIVETRAIN_KP);
-    pidFrontRight.setI(DRIVETRAIN_KI);
-    pidFrontRight.setD(DRIVETRAIN_KD);
-    pidFrontRight.setFF(DRIVETRAIN_KF);
-    pidFrontRight.setOutputRange(-1, 1);
-  }
-  
-  private void flipFuzz() {
-    fuzz *= -1;
   }
 
   //set default command

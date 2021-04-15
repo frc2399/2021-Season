@@ -51,13 +51,11 @@ public class KajDrive extends Command {
         //turn robot in place (based on turnPercent) if not moving forward
         if(Utility.inRange(forwardPercent, 0, OI.DEADBAND_WIDTH * 2))
 		{
-			leftSideSpeed = Math.pow(turnPercent, 5);
-			rightSideSpeed = Math.pow(-turnPercent, 5);
+			leftSideSpeed = Math.pow(turnPercent, 3);
+			rightSideSpeed = Math.pow(-turnPercent, 3);
 		}
 
         //call drivePercent with left percent and right percent speed
-        // System.out.println("Left " + leftSideSpeed);
-        // System.out.println("right " + rightSideSpeed);
         dt.drivePercent(leftSideSpeed, rightSideSpeed);
     }
 

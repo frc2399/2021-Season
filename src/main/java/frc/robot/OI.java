@@ -44,12 +44,6 @@ public class OI {
     //defaultDrive = new TankDrive(dt, this);
     defaultDrive = new KajDrive(dt, this);
 
-   // xBoxButtons[1].whileHeld(new ShootConstant(sh, this, 1, 1));
-  //  xBoxButtons[2].whileHeld(new ShootConstant(sh, this, 0.25, 0.25));
-  //xBoxButtons[3].whileHeld(new ShootConstant(sh, this, 0.5, 0.5));
-  //  xBoxButtons[4].whileHeld(new ShootConstant(sh, this, 0.75, 0.75));
-
-    //xBoxButtons[5].whileHeld(new ShootManual(sh, this));
     joystick = new Joystick(0);
     joystickButton = getButtons(joystick);
     joystickButton[1].whileHeld(new IntakeBall(in, this, 1));
@@ -57,11 +51,7 @@ public class OI {
 
     joystickButton[5].whenPressed(new ExtendIntake(in, this));
     joystickButton[6].whenPressed(new RetractIntake(in, this));
-
-    // xBoxButtons[1].whileHeld(new IndexTowardsShooter(ind, this));
-    // xBoxButtons[2].whileHeld(new IndexAwayShooter(ind, this));
-
-
+    
   }
 
   public static Button[] getButtons(Joystick controller) {
