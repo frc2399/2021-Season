@@ -8,7 +8,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Utility;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj.Timer;
 

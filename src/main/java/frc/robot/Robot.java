@@ -7,34 +7,17 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-
-import edu.wpi.cscore.CvSource;
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.commands.IntakeDefault;
-import frc.robot.commands.RetractIntake;
-import frc.robot.commands.ShootDefault;
 import frc.robot.commands.driveForwardForOneSecond;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
-import edu.wpi.first.wpilibj.smartdashboard.*;
-import edu.wpi.first.wpilibj.livewindow.*;
-import edu.wpi.first.wpilibj.shuffleboard.*;
-import frc.robot.commands.ExtendIntake;
-import frc.robot.commands.IntakeBall;
-import frc.robot.commands.driveForwardForOneSecond;
 import edu.wpi.first.wpilibj.command.*;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -74,37 +57,17 @@ public class Robot extends TimedRobot {
     dt.initDefaultCommand(oi.defaultDrive());
 
     //set default command for shooter to default shoot
-    //sh.initDefaultCommand(new ShootDefault(sh, oi));
     
     //set default command for intake to default shoot
     in.initDefaultCommand(new IntakeDefault(in, oi));
 
-    NetworkTableInstance inst = NetworkTableInstance.getDefault();
-    NetworkTable table = inst.getTable("database");
-    xAng = table.getEntry("xAngle");
-    dist = table.getEntry("distance");
-
-    // UsbCamera cam1 = CameraServer.getInstance().startAutomaticCapture();
-    // cam1.setResolution(321 * 2, 241 * 2);
-
-    // SmartDashboard.putData(dt);
-    
-
-    //LiveWindow lw = LiveWindow.getInstance();
-
-    //TalonSRX topMotor = RobotMap.DRIVE_TRAIN_RIGHT_FRONT_MOTOR;
-
-    //Shuffleboard.getTab("2399").add("Sendable Title", topMotor);
-    // SmartDashboard.putData(in.sol);
-    // SmartDashboard.putData("intake", new IntakeBall(in, oi, 1));
-    // SmartDashboard.putData("intake default", new IntakeDefault(in, oi));
-    // SmartDashboard.putData("extend intake", new ExtendIntake(in, oi));
-    // SmartDashboard.putData("retract intake", new RetractIntake(in, oi));
-
-    //lw.addActuator("f", "c", topMotor);
+    // NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    // NetworkTable table = inst.getTable("database");
 
     // instantiate the command used for the autonomous period
     autonomousCommand = new driveForwardForOneSecond(dt);
+
+    //PowerDistributionPanel example = new PowerDistributionPanel(0);
   }
 
   /**
@@ -172,8 +135,7 @@ public class Robot extends TimedRobot {
     xAngle = xAng.getDouble(1);
     distance = dist.getDouble(1);
 
-    // System.out.println("ANGLE: " + xAngle);
-    // System.out.println("DISTANCE: " + distance);
+
   }
 
     @Override
