@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.SlewRateLimiter;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
@@ -30,6 +31,7 @@ public class OI {
   double leftY;
   double rightY;
   double rightX;
+  SlewRateLimiter filter;
 
   Joystick joystick;
   public static final double DEADBAND_WIDTH = 0.1;
@@ -38,19 +40,28 @@ public class OI {
   public OI(Drivetrain dt, Shooter sh, Intake in, Indexer ind) {
     
     //initialize variables
-    xBox = new Joystick(0);
+    xBox = RobotMap.OperatorInterface.XBOX;
     xBoxButtons = getButtons(xBox);
 
     //defaultDrive = new TankDrive(dt, this);
     defaultDrive = new KajDrive(dt, this);
 
-    joystick = new Joystick(0);
+    joystick = RobotMap.OperatorInterface.JOYSTICK;
     joystickButton = getButtons(joystick);
-    joystickButton[1].whileHeld(new IntakeBall(in, this, 1));
-    joystickButton[2].whileHeld(new IntakeBall(in, this, -1));
+    // joystickButton[1].whileHeld(new IntakeBall(in, this, 1));
+    // joystickButton[2].whileHeld(new IntakeBall(in, this, -1));
 
-    joystickButton[5].whenPressed(new ExtendIntake(in, this));
-    joystickButton[6].whenPressed(new RetractIntake(in, this));
+    joystickButton[1].whileHeld(new ShootConstant(sh, this, 1, 1));
+    joystickButton[2].whileHeld(new ShootConstant(sh, this, 0.25, 0.25));
+    joystickButton[3].whileHeld(new ShootConstant(sh, this, 0.5, 0.5));
+    joystickButton[4].whileHeld(new ShootConstant(sh, this, 0.75, 0.75));
+
+    joystickButton[5].whileHeld(new ShootManual(sh, this));
+
+    joystickButton[7].whenPressed(new ExtendIntake(in, this));
+    joystickButton[8].whenPressed(new RetractIntake(in, this));
+
+    filter = new SlewRateLimiter(0.5);
     
   }
 
@@ -72,6 +83,7 @@ public class OI {
 		if (Math.abs(val) <= DEADBAND_WIDTH) {
 			val = 0.0;
 		}
+    filter.calculate(val);
     val = Math.pow(val, 3);
 		return val;
 	}
