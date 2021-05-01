@@ -27,7 +27,7 @@ public class Indexer extends Subsystem {
   public Indexer() {
 
     //initialize variables (motor controllers with IDs)
-    motorController = RobotMap.INDEXER;
+    motorController = RobotMap.Indexer.INDEXER;
   }
 
   //set motor controllers to percents

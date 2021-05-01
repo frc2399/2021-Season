@@ -47,8 +47,8 @@ public class Shooter extends Subsystem {
   public Shooter() {
       
     //initialize motor controllers
-      bottom = new TalonSRX(6);
-      top = new TalonSRX(7);
+      bottom = RobotMap.Shooter.SHOOTER_LOWER;
+      top = RobotMap.Shooter.SHOOTER_UPPER;
 
       bottom.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PID_IDX, CAN_TIMEOUT);
     	top.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PID_IDX, CAN_TIMEOUT);
@@ -62,12 +62,12 @@ public class Shooter extends Subsystem {
 
   //set bottom motor speed
   public void setBottomShooterSpeed(double speed){
-    bottom.set(ControlMode.PercentOutput, speed * RobotMap.BOTTOM_SHOOTER);
+    bottom.set(ControlMode.PercentOutput, speed * RobotMap.Shooter.BOTTOM_SHOOTER);
   }
 
   //set top motor speed
   public void setTopShooterSpeed(double speed){
-    top.set(ControlMode.PercentOutput, speed * RobotMap.TOP_SHOOTER);
+    top.set(ControlMode.PercentOutput, speed * RobotMap.Shooter.TOP_SHOOTER);
   }
 
   public double toRotationsPerSecondFromNativeTalon(double talonNative) {
@@ -95,8 +95,8 @@ public class Shooter extends Subsystem {
   public void shootVelocity(double bottomVelocity, double topVelocity) {
     flipFuzz();
     
-    double desiredBottomVelocityForward = toNativeUnitsFromInPerSec(bottomVelocity) * RobotMap.BOTTOM_SHOOTER;
-    double desiredTopVelocityForward = toNativeUnitsFromInPerSec(topVelocity) * RobotMap.TOP_SHOOTER;
+    double desiredBottomVelocityForward = toNativeUnitsFromInPerSec(bottomVelocity) * RobotMap.Shooter.BOTTOM_SHOOTER;
+    double desiredTopVelocityForward = toNativeUnitsFromInPerSec(topVelocity) * RobotMap.Shooter.TOP_SHOOTER;
     
     bottom.set(ControlMode.Velocity, desiredBottomVelocityForward);
     top.set(ControlMode.Velocity, desiredTopVelocityForward);

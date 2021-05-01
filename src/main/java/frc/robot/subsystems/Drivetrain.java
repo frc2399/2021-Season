@@ -40,17 +40,17 @@ public class Drivetrain extends Subsystem {
 
     //initialize variables (motor controllers with IDs)
 
-    frontLeftController = RobotMap.DRIVE_TRAIN_LEFT_FRONT_MOTOR;
-    frontRightController = RobotMap.DRIVE_TRAIN_RIGHT_FRONT_MOTOR;
-    backRightController = RobotMap.DRIVE_TRAIN_BACK_RIGHT_CONTROLLER;
-    backLeftController = RobotMap.DRIVE_TRAIN_BACK_LEFT_CONTROLLER;
+    frontLeftController = RobotMap.DriveTrain.DRIVE_TRAIN_LEFT_FRONT_MOTOR;
+    frontRightController = RobotMap.DriveTrain.DRIVE_TRAIN_RIGHT_FRONT_MOTOR;
+    backRightController = RobotMap.DriveTrain.DRIVE_TRAIN_BACK_RIGHT_CONTROLLER;
+    backLeftController = RobotMap.DriveTrain.DRIVE_TRAIN_BACK_LEFT_CONTROLLER;
 
     frontLeftController.setCANTimeout(10);
     frontRightController.setCANTimeout(10);
     backRightController.setCANTimeout(10);
     backLeftController.setCANTimeout(10);
   
-    frontLeftController.setIdleMode(CANSparkMax.IdleMode.kBrake);
+    //frontLeftController.setIdleMode(CANSparkMax.IdleMode.kBrake);
 
 
     //set back motor controllers to follow front motor controllers
@@ -62,8 +62,8 @@ public class Drivetrain extends Subsystem {
   public void drivePercent(double leftPercent, double rightPercent) {
 
     //multiply percents by forward constants
-    double leftPercentForward = leftPercent * RobotMap.LEFT_DRIVETRAIN;
-		double rightPercentForward = rightPercent * RobotMap.RIGHT_DRIVETRAIN;
+    double leftPercentForward = leftPercent * RobotMap.DriveDirection.LEFT_DRIVETRAIN;
+		double rightPercentForward = rightPercent * RobotMap.DriveDirection.RIGHT_DRIVETRAIN;
     // double leftPercentForward = leftPercent ;
 		// double rightPercentForward = rightPercent ;
     

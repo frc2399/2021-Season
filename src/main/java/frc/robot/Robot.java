@@ -17,6 +17,8 @@ import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.command.*;
+import edu.wpi.first.wpilibj.Compressor;
+import frc.robot.commands.ShootDefault;
 
 
 /**
@@ -39,6 +41,9 @@ public class Robot extends TimedRobot {
   NetworkTableEntry xAng, dist;
   double xAngle, distance;
 
+  //AHRS navx = new AHRS(SerialPort.Port.kUSB);
+
+  
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -48,7 +53,7 @@ public class Robot extends TimedRobot {
     
     //initialize variables
     dt = new Drivetrain();
-    // sh = new Shooter();
+    sh = new Shooter();
     in = new Intake();
     // ind = new Indexer();
     oi = new OI(dt, sh, in, ind);
@@ -57,6 +62,7 @@ public class Robot extends TimedRobot {
     dt.initDefaultCommand(oi.defaultDrive());
 
     //set default command for shooter to default shoot
+    sh.initDefaultCommand(new ShootDefault(sh, oi));
     
     //set default command for intake to default shoot
     in.initDefaultCommand(new IntakeDefault(in, oi));
@@ -68,6 +74,8 @@ public class Robot extends TimedRobot {
     autonomousCommand = new driveForwardForOneSecond(dt);
 
     //PowerDistributionPanel example = new PowerDistributionPanel(0);
+
+    //Compressor c = new Compressor(0);
   }
 
   /**
@@ -132,8 +140,8 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     
-    xAngle = xAng.getDouble(1);
-    distance = dist.getDouble(1);
+    // xAngle = xAng.getDouble(1);
+    // distance = dist.getDouble(1);
 
 
   }

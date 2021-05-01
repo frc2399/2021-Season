@@ -9,6 +9,8 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
+// import edu.wpi.first.wpilibj.DoubleSolenoid;
+// import frc.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -19,11 +21,10 @@ public class Intake extends Subsystem {
   
   //instantiate motor controller
   public VictorSPX victor1;
-
-  //public DoubleSolenoid sol;
   
   //constructor
   public Intake() {
+
 
   }
 
@@ -34,11 +35,12 @@ public class Intake extends Subsystem {
   }
 
   public void extendIntake(){
-    //sol.set(DoubleSolenoid.Value.kForward);
+    //RobotMap.Intake.SOL.set(DoubleSolenoid.Value.kForward);
   }
 
   public void retractIntake(){
-    //sol.set(DoubleSolenoid.Value.kReverse);
+    //RobotMap.Intake.SOL.set(DoubleSolenoid.Value.kReverse);
+
   }
 
   //set default command
