@@ -47,12 +47,13 @@ public class Shooter extends Subsystem {
   public Shooter() {
       
     //initialize motor controllers
-      bottom = RobotMap.Shooter.SHOOTER_LOWER;
+      // bottom = RobotMap.Shooter.SHOOTER_LOWER;
       top = RobotMap.Shooter.SHOOTER_UPPER;
 
-      bottom.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PID_IDX, CAN_TIMEOUT);
-    	top.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PID_IDX, CAN_TIMEOUT);
-    	bottom.setSensorPhase(false);
+      // bottom.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PID_IDX, CAN_TIMEOUT);
+      top.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PID_IDX, CAN_TIMEOUT);
+      // the function to flip the direction of an encoder reading 
+    	// bottom.setSensorPhase(false);
       top.setSensorPhase(true);    
       
       fuzz = 0.001;
@@ -62,12 +63,16 @@ public class Shooter extends Subsystem {
 
   //set bottom motor speed
   public void setBottomShooterSpeed(double speed){
-    bottom.set(ControlMode.PercentOutput, speed * RobotMap.Shooter.BOTTOM_SHOOTER);
+    // bottom.set(ControlMode.PercentOutput, speed * RobotMap.Shooter.BOTTOM_SHOOTER);
   }
 
   //set top motor speed
   public void setTopShooterSpeed(double speed){
     top.set(ControlMode.PercentOutput, speed * RobotMap.Shooter.TOP_SHOOTER);
+    if (speed != 0.0)
+    {
+        System.out.println("top shooter");
+    }
   }
 
   public double toRotationsPerSecondFromNativeTalon(double talonNative) {

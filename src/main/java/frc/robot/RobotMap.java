@@ -48,8 +48,8 @@ public class RobotMap {
     public static final int BOTTOM_SHOOTER = 1;
     public static final int TOP_SHOOTER = 1;
 
-    public static TalonSRX SHOOTER_UPPER =  new TalonSRX(3);
-    public static TalonSRX SHOOTER_LOWER = new TalonSRX(5);
+    public static TalonSRX SHOOTER_UPPER =  new TalonSRX(8);
+    // public static TalonSRX SHOOTER_LOWER = new TalonSRX(6);
   }
   public interface DriveTrain {
 

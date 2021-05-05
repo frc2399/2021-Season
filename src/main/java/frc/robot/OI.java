@@ -51,6 +51,8 @@ public class OI {
     // joystickButton[1].whileHeld(new IntakeBall(in, this, 1));
     // joystickButton[2].whileHeld(new IntakeBall(in, this, -1));
 
+    // joystickButton[0].whileHeld(new ShootConstant(sh, this, 1, 1)); // trigger is button 0 ?
+    // button one is the trigger
     joystickButton[1].whileHeld(new ShootConstant(sh, this, 1, 1));
     joystickButton[2].whileHeld(new ShootConstant(sh, this, 0.25, 0.25));
     joystickButton[3].whileHeld(new ShootConstant(sh, this, 0.5, 0.5));

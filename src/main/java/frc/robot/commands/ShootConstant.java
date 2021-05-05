@@ -44,7 +44,8 @@ public class ShootConstant extends Command {
         sh.setBottomShooterSpeed(bottomPercent);
         sh.setTopShooterSpeed(topPercent);
 
-        System.out.println("Bottom RPS: " + sh.getBottomRotationsPerSecond());
+        System.out.println("in shooter constant execute");
+        // System.out.println("Bottom RPS: " + sh.getBottomRotationsPerSecond());
         System.out.println("Top RPS: " + sh.getTopRotationsPerSecond());
     }
 
