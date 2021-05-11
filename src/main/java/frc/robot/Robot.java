@@ -17,7 +17,7 @@ import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.command.*;
-// import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Compressor;
 import frc.robot.commands.ShootDefault;
 
 
@@ -36,6 +36,7 @@ public class Robot extends TimedRobot {
   public static OI oi;
   public static Intake in;
   public static Indexer ind;
+  static Compressor compressor;
   Command autonomousCommand;
 
   NetworkTableEntry xAng, dist;
@@ -75,7 +76,7 @@ public class Robot extends TimedRobot {
 
     //PowerDistributionPanel example = new PowerDistributionPanel(0);
 
-    //Compressor c = new Compressor(0);
+    compressor = new Compressor(1);
   }
 
   /**

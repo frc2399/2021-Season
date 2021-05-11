@@ -32,6 +32,7 @@ public class OI {
   double rightY;
   double rightX;
   SlewRateLimiter filter;
+  double shooterMotorSpeed;
 
   Joystick joystick;
   public static final double DEADBAND_WIDTH = 0.1;
@@ -53,10 +54,13 @@ public class OI {
 
     // joystickButton[0].whileHeld(new ShootConstant(sh, this, 1, 1)); // trigger is button 0 ?
     // button one is the trigger
+    System.out.println("length " + joystickButton.length);
+    System.out.println("joystickButton[0] " + joystickButton[0]);
+    // joystickButton[0].whileHeld(new ShootConstant(sh, this, 1, 1));
     joystickButton[1].whileHeld(new ShootConstant(sh, this, 1, 1));
-    joystickButton[2].whileHeld(new ShootConstant(sh, this, 0.25, 0.25));
+    joystickButton[2].whileHeld(new ShootConstant(sh, this, 0.75, 0.75));
     joystickButton[3].whileHeld(new ShootConstant(sh, this, 0.5, 0.5));
-    joystickButton[4].whileHeld(new ShootConstant(sh, this, 0.75, 0.75));
+    joystickButton[4].whileHeld(new ShootConstant(sh, this, 0.25, 0.25));
 
     joystickButton[5].whileHeld(new ShootManual(sh, this));
 
@@ -68,7 +72,8 @@ public class OI {
   }
 
   public static Button[] getButtons(Joystick controller) {
-		Button[] controllerButtons = new Button[controller.getButtonCount() + 1];
+    Button[] controllerButtons = new Button[controller.getButtonCount() + 1];
+    System.out.println("controller.getButtonCount() " + controller.getButtonCount());
 		for(int i = 1; i < controllerButtons.length; i++) {
 			controllerButtons[i] = new JoystickButton(controller, i);
 		}
@@ -115,4 +120,9 @@ public class OI {
     return rightShoulder;
   }
 
+  public double getShooterMotorSpeed()
+  {
+    shooterMotorSpeed = (joystick.getRawAxis(3) + 1 ) / 2. ;
+    return shooterMotorSpeed;
+  }
 }

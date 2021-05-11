@@ -38,8 +38,11 @@ public class ShootDefault extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //set speed to run bottom and top shooter axles
-        sh.setBottomShooterSpeed(0);
-        sh.setTopShooterSpeed(0);
+        sh.setBottomShooterSpeed(0.0);
+        sh.setTopShooterSpeed(0.0);
+        sh.setBottomIndexerSpeed(0.0);
+        sh.setTopIndexerSpeed(0.0);
+
     }
 
     // Make this return true when this Command no longer needs to run execute()

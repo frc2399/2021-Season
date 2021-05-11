@@ -11,7 +11,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.Joystick;
-//import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -44,13 +44,16 @@ public class RobotMap {
 
 
   public interface Shooter{
-
-    public static final int BOTTOM_SHOOTER = 1;
-    public static final int TOP_SHOOTER = 1;
-
-    public static TalonSRX SHOOTER_UPPER =  new TalonSRX(8);
-    // public static TalonSRX SHOOTER_LOWER = new TalonSRX(6);
+    public static TalonSRX SHOOTER_UPPER =  new TalonSRX(6);
+    public static TalonSRX SHOOTER_LOWER = new TalonSRX(8);
   }
+
+  public interface Indexer {
+
+    public static TalonSRX INDEXER_UPPER = new TalonSRX(7);
+    public static TalonSRX INDEXER_LOWER = new TalonSRX(9);
+  }
+
   public interface DriveTrain {
 
     public static CANSparkMax DRIVE_TRAIN_LEFT_FRONT_MOTOR =  new CANSparkMax(1, MotorType.kBrushless);
@@ -64,13 +67,9 @@ public class RobotMap {
   // public static TalonSRX INTAKE_MOTOR = new TalonSRX(8);
   
   
-  public interface Indexer {
-
-    public static TalonSRX INDEXER = new TalonSRX(5);
-  }
 
   public interface Intake {
-    //public static DoubleSolenoid SOL = new DoubleSolenoid(1, 0, 1);
+    public static DoubleSolenoid SOL = new DoubleSolenoid(1, 0, 1);
 
   }
   

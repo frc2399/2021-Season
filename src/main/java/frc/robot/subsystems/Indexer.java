@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import frc.robot.RobotMap;
 /**
  * Drivetrain subsystem.
  */
@@ -27,7 +26,7 @@ public class Indexer extends Subsystem {
   public Indexer() {
 
     //initialize variables (motor controllers with IDs)
-    motorController = RobotMap.Indexer.INDEXER;
+    // motorController = RobotMap.Indexer.INDEXER;
   }
 
   //set motor controllers to percents
