@@ -89,6 +89,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+
+    // System.out.println("speed " + oi.getShooterMotorSpeed());
+
   }
 
   /**
@@ -144,7 +147,7 @@ public class Robot extends TimedRobot {
     // xAngle = xAng.getDouble(1);
     // distance = dist.getDouble(1);
 
-
+    System.out.println("speed " + oi.getShooterMotorSpeed());
   }
 
     @Override

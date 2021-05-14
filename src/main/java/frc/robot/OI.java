@@ -123,6 +123,7 @@ public class OI {
   public double getShooterMotorSpeed()
   {
     shooterMotorSpeed = (joystick.getRawAxis(3) + 1 ) / 2. ;
+    // System.out.println("motor speed " + shooterMotorSpeed);
     return shooterMotorSpeed;
   }
 }

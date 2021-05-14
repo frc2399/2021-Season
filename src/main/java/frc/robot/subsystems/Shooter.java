@@ -74,21 +74,21 @@ public class Shooter extends Subsystem {
 
 
   public void setBottomIndexerSpeed(double speed){
-    indexer_bottom.set(ControlMode.PercentOutput, speed * 1.0);
+    indexer_bottom.set(ControlMode.PercentOutput, speed * - 1.0);
   }
   public void setTopIndexerSpeed(double speed){
-    indexer_top.set(ControlMode.PercentOutput, speed * - 1.0);
+    indexer_top.set(ControlMode.PercentOutput, speed * 1.0);
   }
 
 
   //set bottom motor speed
   public void setBottomShooterSpeed(double speed){
-    bottom.set(ControlMode.PercentOutput, speed * 1.0);
+    bottom.set(ControlMode.PercentOutput, speed * - 1.0);
   }
 
   //set top motor speed
   public void setTopShooterSpeed(double speed){
-    top.set(ControlMode.PercentOutput, speed * -1.0);
+    top.set(ControlMode.PercentOutput, -0.25 *speed * 1.0);
     if (speed != 0.0)
     {
         System.out.println("top shooter");
