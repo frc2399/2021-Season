@@ -19,6 +19,7 @@ import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.Compressor;
 import frc.robot.commands.ShootDefault;
+import frc.robot.commands.IndexerDefault;
 
 
 /**
@@ -56,7 +57,7 @@ public class Robot extends TimedRobot {
     dt = new Drivetrain();
     sh = new Shooter();
     in = new Intake();
-    // ind = new Indexer();
+    ind = new Indexer();
     oi = new OI(dt, sh, in, ind);
 
     //set initial default command for drive train to default drive
@@ -67,6 +68,8 @@ public class Robot extends TimedRobot {
     
     //set default command for intake to default shoot
     in.initDefaultCommand(new IntakeDefault(in, oi));
+
+    ind.initDefaultCommand(new IndexerDefault(ind, oi));
 
     // NetworkTableInstance inst = NetworkTableInstance.getDefault();
     // NetworkTable table = inst.getTable("database");
@@ -147,7 +150,7 @@ public class Robot extends TimedRobot {
     // xAngle = xAng.getDouble(1);
     // distance = dist.getDouble(1);
 
-    System.out.println("speed " + oi.getShooterMotorSpeed());
+    //System.out.println("speed " + oi.getShooterMotorSpeed());
   }
 
     @Override

@@ -43,8 +43,6 @@ public class ShootManual extends Command {
         // sh.setTopShooterSpeed(oi.rightShoulder());
         sh.setBottomShooterSpeed( oi.getShooterMotorSpeed());
         sh.setTopShooterSpeed( oi.getShooterMotorSpeed());
-        sh.setBottomIndexerSpeed( indexer_speed_fraction * oi.getShooterMotorSpeed());
-        sh.setTopIndexerSpeed( indexer_speed_fraction * oi.getShooterMotorSpeed());
     
     }
 
