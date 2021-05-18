@@ -33,6 +33,7 @@ public class OI {
   double rightX;
   SlewRateLimiter filter;
   double shooterMotorSpeed;
+  double slewRateLimiter;
 
   Joystick joystick;
   public static final double DEADBAND_WIDTH = 0.1;
@@ -74,9 +75,6 @@ public class OI {
     joystickButton[10].whileHeld(new IndexAwayShooter(ind, this));
     joystickButton[2].whileHeld(new IndexTowardsShooter(ind, this));
 
-
-
-    filter = new SlewRateLimiter(0.5);
     
   }
 
@@ -99,6 +97,7 @@ public class OI {
 		if (Math.abs(val) <= DEADBAND_WIDTH) {
 			val = 0.0;
 		}
+    filter = new SlewRateLimiter(getSlewRateLimiter());
     filter.calculate(val);
     val = Math.pow(val, 3);
 		return val;
@@ -129,10 +128,10 @@ public class OI {
     return rightShoulder;
   }
 
-  public double getShooterMotorSpeed()
+  public double getSlewRateLimiter()
   {
-    shooterMotorSpeed = (joystick.getRawAxis(3) + 1 ) / 2. ;
+    slewRateLimiter = (joystick.getRawAxis(3) + 1 ) / 2. ;
     // System.out.println("motor speed " + shooterMotorSpeed);
-    return shooterMotorSpeed;
+    return slewRateLimiter;
   }
 }

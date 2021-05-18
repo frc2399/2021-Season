@@ -20,6 +20,8 @@ import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.Compressor;
 import frc.robot.commands.ShootDefault;
 import frc.robot.commands.IndexerDefault;
+// import edu.wpi.first.cameraserver.CameraServer;
+// import edu.wpi.cscore.UsbCamera;
 
 
 /**
@@ -75,11 +77,14 @@ public class Robot extends TimedRobot {
     // NetworkTable table = inst.getTable("database");
 
     // instantiate the command used for the autonomous period
-    autonomousCommand = new driveForwardForOneSecond(dt);
+    //autonomousCommand = new driveForwardForOneSecond(dt);
 
     //PowerDistributionPanel example = new PowerDistributionPanel(0);
 
     compressor = new Compressor(1);
+
+    // UsbCamera cam1 = CameraServer.getInstance().startAutomaticCapture();
+    // cam1.setResolution(321 * 2, 241 * 2);
   }
 
   /**
@@ -125,7 +130,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     // schedule the autonomous command (example)
-    if (autonomousCommand != null) autonomousCommand.start();
+    //if (autonomousCommand != null) autonomousCommand.start();
   }
 
   /**
@@ -133,7 +138,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    Scheduler.getInstance().run();
+    // Scheduler.getInstance().run();
   }
 
   @Override

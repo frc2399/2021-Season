@@ -41,8 +41,9 @@ public class ShootManual extends Command {
         //set speed to run bottom and top shooter axles
         // sh.setBottomShooterSpeed(oi.leftShoulder());
         // sh.setTopShooterSpeed(oi.rightShoulder());
-        sh.setBottomShooterSpeed( oi.getShooterMotorSpeed());
-        sh.setTopShooterSpeed( oi.getShooterMotorSpeed());
+        
+        // sh.setBottomShooterSpeed( oi.getShooterMotorSpeed());
+        // sh.setTopShooterSpeed( oi.getShooterMotorSpeed());
     
     }
 
