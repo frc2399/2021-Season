@@ -33,6 +33,7 @@ public class OI {
   double rightX;
   SlewRateLimiter filter;
   double shooterMotorSpeed;
+  double slewRateLimiter;
 
   Joystick joystick;
   public static final double DEADBAND_WIDTH = 0.1;
@@ -57,17 +58,23 @@ public class OI {
     System.out.println("length " + joystickButton.length);
     System.out.println("joystickButton[0] " + joystickButton[0]);
     // joystickButton[0].whileHeld(new ShootConstant(sh, this, 1, 1));
-    joystickButton[1].whileHeld(new ShootConstant(sh, this, 1, 1));
-    joystickButton[2].whileHeld(new ShootConstant(sh, this, 0.75, 0.75));
-    joystickButton[3].whileHeld(new ShootConstant(sh, this, 0.5, 0.5));
-    joystickButton[4].whileHeld(new ShootConstant(sh, this, 0.25, 0.25));
+    // joystickButton[1].whileHeld(new ShootConstant(sh, this, 1, 1));
+    // joystickButton[2].whileHeld(new ShootConstant(sh, this, 0.75, 0.75));
+    // joystickButton[3].whileHeld(new ShootConstant(sh, this, 0.5, 0.5));
+    // joystickButton[4].whileHeld(new ShootConstant(sh, this, 0.25, 0.25));
 
-    joystickButton[5].whileHeld(new ShootManual(sh, this));
+    joystickButton[1].whileHeld(new ShootManual(sh, this));
+    joystickButton[3].whenPressed(new DecreaseBottomSpeed(sh));
+    joystickButton[4].whenPressed(new DecreaseTopSpeed(sh));
+    joystickButton[5].whenPressed(new IncreaseBottomSpeed(sh));
+    joystickButton[6].whenPressed(new IncreaseTopSpeed(sh));
 
-    joystickButton[7].whenPressed(new ExtendIntake(in, this));
-    joystickButton[8].whenPressed(new RetractIntake(in, this));
+    joystickButton[12].whenPressed(new ExtendIntake(in, this));
+    joystickButton[11].whenPressed(new RetractIntake(in, this));
 
-    filter = new SlewRateLimiter(0.5);
+    joystickButton[10].whileHeld(new IndexAwayShooter(ind, this));
+    joystickButton[2].whileHeld(new IndexTowardsShooter(ind, this));
+
     
   }
 
@@ -90,6 +97,7 @@ public class OI {
 		if (Math.abs(val) <= DEADBAND_WIDTH) {
 			val = 0.0;
 		}
+    filter = new SlewRateLimiter(getSlewRateLimiter());
     filter.calculate(val);
     val = Math.pow(val, 3);
 		return val;
@@ -120,10 +128,10 @@ public class OI {
     return rightShoulder;
   }
 
-  public double getShooterMotorSpeed()
+  public double getSlewRateLimiter()
   {
-    shooterMotorSpeed = (joystick.getRawAxis(3) + 1 ) / 2. ;
+    slewRateLimiter = (joystick.getRawAxis(3) + 1 ) / 2. ;
     // System.out.println("motor speed " + shooterMotorSpeed);
-    return shooterMotorSpeed;
+    return slewRateLimiter;
   }
 }

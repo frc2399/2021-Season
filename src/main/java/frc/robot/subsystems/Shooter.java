@@ -15,6 +15,7 @@ import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 
 /**
  * Drivetrain subsystem.
@@ -24,8 +25,6 @@ public class Shooter extends Subsystem {
   //instantiate motor controllers
   private TalonSRX bottom;
   private TalonSRX top;
-  private TalonSRX indexer_bottom;
-  private TalonSRX indexer_top;
 
   //TODO: correct for shooter
   private static final int PID_IDX = 0;
@@ -33,6 +32,8 @@ public class Shooter extends Subsystem {
   private static final int ENCODER_TICKS_PER_REVOLUTION = 4096;
   private static final double GEAR_RATIO = 84.0 / 54.0;
   private static final double TALON_100MS_IN_1S = 10.0;
+  private double topSpeed = 0.0;
+  private double bottomSpeed = 0.0;
   // private static final int WHEEL_DIAMETER = 6;
   // private static final double C_100MS_IN_1S = 10.0;
 
@@ -52,34 +53,60 @@ public class Shooter extends Subsystem {
     bottom = RobotMap.Shooter.SHOOTER_LOWER;
     top = RobotMap.Shooter.SHOOTER_UPPER;
 
-    indexer_bottom = RobotMap.Indexer.INDEXER_LOWER;
-    indexer_top = RobotMap.Indexer.INDEXER_UPPER;
-
     bottom.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PID_IDX, CAN_TIMEOUT);
     top.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PID_IDX, CAN_TIMEOUT);
     // the function to flip the direction of an encoder reading 
     bottom.setSensorPhase(false);
     top.setSensorPhase(true);    
     
-    indexer_bottom.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PID_IDX, CAN_TIMEOUT);
-    indexer_top.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PID_IDX, CAN_TIMEOUT);
-    // the function to flip the direction of an encoder reading 
-    indexer_bottom.setSensorPhase(false);
-    indexer_top.setSensorPhase(true);    
     
   // fuzz = 0.001;
   }
 
   //ready ball
-
-
-  public void setBottomIndexerSpeed(double speed){
-    indexer_bottom.set(ControlMode.PercentOutput, speed * - 1.0);
+  public void increaseTopSpeed()
+  {
+    topSpeed += 0.1;
+    if (topSpeed >= 1)
+    {
+      topSpeed = 1;
+    }
+    System.out.println("top speed: " + topSpeed);
+    SmartDashboard.putNumber("topSpeed ", topSpeed);
   }
-  public void setTopIndexerSpeed(double speed){
-    indexer_top.set(ControlMode.PercentOutput, speed * 1.0);
+
+  public void decreaseTopSpeed()
+  {
+    topSpeed -= 0.1;
+    if (topSpeed <= -1)
+    {
+      topSpeed = -1;
+    }
+    System.out.println("top speed: " + topSpeed);
+    SmartDashboard.putNumber("topSpeed ", topSpeed);
   }
 
+  public void increaseBottomSpeed()
+  {
+    bottomSpeed += 0.1;
+    if (bottomSpeed >= 1)
+    {
+      bottomSpeed = 1;
+    }
+    System.out.println("bottom speed: " + bottomSpeed);
+    SmartDashboard.putNumber("bottomSpeed ", bottomSpeed);
+  }
+
+  public void decreaseBottomSpeed()
+  {
+    bottomSpeed -= 0.1;
+    if (bottomSpeed <= -1)
+    {
+      bottomSpeed = -1;
+    }
+    System.out.println("bottom speed: " + bottomSpeed);
+    SmartDashboard.putNumber("bottomSpeed ", bottomSpeed);
+  }
 
   //set bottom motor speed
   public void setBottomShooterSpeed(double speed){

@@ -38,6 +38,8 @@ public class IndexTowardsShooter extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //set speed to run intake
+        // sh.setBottomIndexerSpeed(bottomPercent);
+        // sh.setTopIndexerSpeed(topPercent);
         ind.index(1);
     }
 

@@ -19,6 +19,9 @@ import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.Compressor;
 import frc.robot.commands.ShootDefault;
+import frc.robot.commands.IndexerDefault;
+// import edu.wpi.first.cameraserver.CameraServer;
+// import edu.wpi.cscore.UsbCamera;
 
 
 /**
@@ -56,7 +59,7 @@ public class Robot extends TimedRobot {
     dt = new Drivetrain();
     sh = new Shooter();
     in = new Intake();
-    // ind = new Indexer();
+    ind = new Indexer();
     oi = new OI(dt, sh, in, ind);
 
     //set initial default command for drive train to default drive
@@ -68,15 +71,20 @@ public class Robot extends TimedRobot {
     //set default command for intake to default shoot
     in.initDefaultCommand(new IntakeDefault(in, oi));
 
+    ind.initDefaultCommand(new IndexerDefault(ind, oi));
+
     // NetworkTableInstance inst = NetworkTableInstance.getDefault();
     // NetworkTable table = inst.getTable("database");
 
     // instantiate the command used for the autonomous period
-    autonomousCommand = new driveForwardForOneSecond(dt);
+    //autonomousCommand = new driveForwardForOneSecond(dt);
 
     //PowerDistributionPanel example = new PowerDistributionPanel(0);
 
     compressor = new Compressor(1);
+
+    // UsbCamera cam1 = CameraServer.getInstance().startAutomaticCapture();
+    // cam1.setResolution(321 * 2, 241 * 2);
   }
 
   /**
@@ -122,7 +130,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     // schedule the autonomous command (example)
-    if (autonomousCommand != null) autonomousCommand.start();
+    //if (autonomousCommand != null) autonomousCommand.start();
   }
 
   /**
@@ -130,7 +138,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    Scheduler.getInstance().run();
+    // Scheduler.getInstance().run();
   }
 
   @Override
@@ -147,7 +155,7 @@ public class Robot extends TimedRobot {
     // xAngle = xAng.getDouble(1);
     // distance = dist.getDouble(1);
 
-    System.out.println("speed " + oi.getShooterMotorSpeed());
+    //System.out.println("speed " + oi.getShooterMotorSpeed());
   }
 
     @Override

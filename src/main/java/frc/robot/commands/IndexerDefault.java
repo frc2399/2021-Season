@@ -9,26 +9,26 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
-import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Indexer;
 
-public class ShootDefault extends Command {
+public class IndexerDefault extends Command {
 
     //insantiate global variables
-    Shooter sh;
+    Indexer ind;
     OI oi;
     
     //constructor
-	public ShootDefault(Shooter shooter, OI operatorInterface) {
+	public IndexerDefault(Indexer indexer, OI operatorInterface) {
         
         //initialize variables
-        sh = shooter;
+        ind = indexer;
         oi = operatorInterface;
 
-        //needs shooter to run
-        requires(sh);
+        //needs intake to run
+        requires(ind);
         
         //set command to be interruptible
-		setInterruptible(true);
+		//setInterruptible(true);
     }
     
     // Called just before this Command runs the first time
@@ -37,10 +37,8 @@ public class ShootDefault extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //set speed to run bottom and top shooter axles
-        sh.setBottomShooterSpeed(0.0);
-        sh.setTopShooterSpeed(0.0);
-
+        //set speed to run intake
+        ind.index(0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
