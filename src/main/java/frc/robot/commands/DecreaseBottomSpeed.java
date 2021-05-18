@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
-import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Shooter;
 
 public class DecreaseBottomSpeed extends Command {
@@ -44,7 +43,7 @@ public class DecreaseBottomSpeed extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false; 
+        return true; 
     }
 
     // Called once after isFinished returns true
