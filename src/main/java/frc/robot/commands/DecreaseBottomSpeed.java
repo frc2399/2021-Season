@@ -8,8 +8,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.OI;
-import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Shooter;
 
 public class DecreaseBottomSpeed extends Command {

@@ -35,6 +35,7 @@ public class RetractIntake extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //retract intake
+        System.out.println("execute retract intake");
         in.retractIntake();
     }
 

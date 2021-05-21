@@ -41,6 +41,7 @@ public class ShootManual extends Command {
         // sh.setBottomShooterSpeed(oi.leftShoulder());
         // sh.setTopShooterSpeed(oi.rightShoulder());
         
+
         sh.setBottomShooterSpeed(sh.bottomSpeed);
         sh.setTopShooterSpeed(sh.topSpeed);
     
