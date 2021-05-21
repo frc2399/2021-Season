@@ -35,10 +35,12 @@ public class Intake extends Subsystem {
   }
 
   public void extendIntake(){
+    System.out.println("extendIntake");
     RobotMap.Intake.SOL.set(DoubleSolenoid.Value.kForward);
   }
 
   public void retractIntake(){
+    System.out.println("retractIntake");
     RobotMap.Intake.SOL.set(DoubleSolenoid.Value.kReverse);
   }
 

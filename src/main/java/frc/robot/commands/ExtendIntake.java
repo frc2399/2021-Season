@@ -35,6 +35,7 @@ public class ExtendIntake extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //extend intake
+        System.out.println("execute extend intake");
         in.extendIntake();
     }
 
