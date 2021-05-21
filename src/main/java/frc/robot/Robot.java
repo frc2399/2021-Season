@@ -81,7 +81,7 @@ public class Robot extends TimedRobot {
 
     //PowerDistributionPanel example = new PowerDistributionPanel(0);
 
-    compressor = new Compressor(1);
+    //compressor = new Compressor(1);
 
     // UsbCamera cam1 = CameraServer.getInstance().startAutomaticCapture();
     // cam1.setResolution(321 * 2, 241 * 2);

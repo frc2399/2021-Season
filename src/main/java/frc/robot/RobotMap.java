@@ -52,6 +52,8 @@ public class RobotMap {
 
     public static TalonSRX INDEXER_UPPER = new TalonSRX(7);
     public static TalonSRX INDEXER_LOWER = new TalonSRX(9);
+
+    public static double INDEXER_SPEED = 1.0;
   }
 
   public interface DriveTrain {
