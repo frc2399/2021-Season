@@ -9,22 +9,24 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.Drivetrain;
-import edu.wpi.first.wpilibj.Timer;
 
 public class driveForwardGivenDistance extends Command {
 
     //insantiate global variables
     Drivetrain dt;
 	double turnPercent, forwardPercent;
-    private double startDistance;
+    // private double startDistance;
     private double endDistance;
+
+    private double speed;
     
     //constructor (takes in drivetrain, left percent, and right percent)
-	public driveForwardGivenDistance(Drivetrain driveTrain, double d) {
+	public driveForwardGivenDistance(Drivetrain driveTrain, double d, double s) {
         
         //initialize variables
         dt = driveTrain;
         endDistance = d ;
+        speed = s;
 
         //needs drivetrain to run
         requires(dt);
@@ -45,7 +47,7 @@ public class driveForwardGivenDistance extends Command {
         //call drivePercent with left percent and right percent speed
         // System.out.println("Left " + leftSideSpeed);
         // System.out.println("right " + rightSideSpeed);
-        dt.drivePercent(0.3, 0.3);
+        dt.drivePercent(speed, speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
