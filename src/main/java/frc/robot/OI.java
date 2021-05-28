@@ -76,10 +76,7 @@ public class OI {
     joystickButton[10].whileHeld(new IndexAwayShooter(ind, this));
     joystickButton[2].whileHeld(new IndexTowardsShooter(ind, this));
 
-    
     joystickButton[7].whenPressed(new driveForwardGivenDistance(dt, 10.0, 0.2));
-
-    
   }
 
   public static Button[] getButtons(Joystick controller) {
