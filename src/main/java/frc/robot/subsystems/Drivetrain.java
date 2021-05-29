@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
+import com.revrobotics.CANEncoder;
+
 
 import com.revrobotics.CANSparkMax;
 /**
@@ -22,10 +24,14 @@ import com.revrobotics.CANSparkMax;
 public class Drivetrain extends Subsystem {
 
   //instantiate global variables
-  private CANSparkMax frontRightController;
-  private CANSparkMax frontLeftController;
+  public CANSparkMax frontRightController;
+  public CANSparkMax frontLeftController;
   private CANSparkMax backRightController;
   private CANSparkMax backLeftController;
+
+  private CANEncoder left_encoder;
+  private CANEncoder right_encoder;
+  
 
   public static final double DRIVETRAIN_KP = 1.875;
 	public static final double DRIVETRAIN_KI = 0.006;
@@ -56,6 +62,27 @@ public class Drivetrain extends Subsystem {
     //set back motor controllers to follow front motor controllers
     backLeftController.follow(frontLeftController);
     backRightController.follow(frontRightController);
+
+
+    left_encoder = frontLeftController.getEncoder();
+    right_encoder = frontRightController.getEncoder();
+  
+
+    double left_velocity = left_encoder.getVelocity(); // native RPM
+    double right_velocity = right_encoder.getVelocity(); // native RPM
+
+  }
+
+  public void resetPosition(){
+    left_encoder.setPosition(0.0);
+    right_encoder.setPosition(0.0);
+  }
+
+  public double getPosition()
+  {
+    double right_position = right_encoder.getPosition(); // number of rotations of the motor
+    double left_position = right_encoder.getPosition(); // number of rotations of the motor
+    return ( (left_position + right_position) / 2.0);
   }
 
   //set motor controllers to percents
