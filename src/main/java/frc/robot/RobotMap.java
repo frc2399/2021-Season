@@ -66,12 +66,13 @@ public class RobotMap {
   
 
 
-  // public static TalonSRX INTAKE_MOTOR = new TalonSRX(8);
+  
   
   
 
   public interface Intake {
     public static DoubleSolenoid SOL = new DoubleSolenoid(1, 0, 1);
+    public static TalonSRX INTAKE_MOTOR = new TalonSRX(10);
 
   }
   

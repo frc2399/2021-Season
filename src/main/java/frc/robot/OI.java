@@ -69,6 +69,7 @@ public class OI {
     joystickButton[5].whenPressed(new IncreaseBottomSpeed(sh));
     joystickButton[6].whenPressed(new IncreaseTopSpeed(sh));
 
+    joystickButton[9].whileHeld(new IntakeMotor(in, this));
     joystickButton[12].whileHeld(new ExtendIntake(in, this));
     joystickButton[11].whileHeld(new RetractIntake(in, this));
     joystickButton[8].whenPressed(new ToggleIntake(in, this));
