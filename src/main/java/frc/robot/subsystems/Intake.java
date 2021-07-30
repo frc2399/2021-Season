@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.RobotMap;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -31,7 +32,7 @@ public class Intake extends Subsystem {
 
   //set motor speed
   public void setIntakeSpeed(double speed){
-  //   talon1.set(ControlMode.PercentOutput, speed);
+  RobotMap.Intake.INTAKE_MOTOR.set(ControlMode.PercentOutput, speed);
   }
 
   public void extendIntake(){
