@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.IntakeDefault;
 // import frc.robot.commands.driveForwardForOneSecond;
 import frc.robot.subsystems.Drivetrain;
@@ -22,6 +23,9 @@ import frc.robot.commands.ShootDefault;
 import frc.robot.commands.IndexerDefault;
 // import edu.wpi.first.cameraserver.CameraServer;
 // import edu.wpi.cscore.UsbCamera;
+
+
+import com.revrobotics.CANEncoder;
 
 
 /**
@@ -97,6 +101,26 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+
+    CANEncoder left_encoder = dt.frontLeftController.getEncoder();
+    CANEncoder right_encoder = dt.frontRightController.getEncoder();
+  
+
+    double left_velocity = left_encoder.getVelocity(); // native RPM
+    double right_velocity = right_encoder.getVelocity(); // native RPM
+    double right_position = right_encoder.getPosition(); // number of rotations of the motor
+    double left_position = right_encoder.getPosition(); // number of rotations of the motor
+
+    SmartDashboard.putNumber("left velocity", left_velocity);
+    SmartDashboard.putNumber("right velocity", right_velocity);
+    SmartDashboard.putNumber("left position", left_position);
+    SmartDashboard.putNumber("right position", right_position);
+
+
+    // private CANEncoder encoder2 = new CANEncoder(dt.frontRightController);
+
+    // And then you can use encoder.getPosition() and encoder.getVelocity() for motor rotations (distance) and motor velocity (rpm).
+
 
     // System.out.println("speed " + oi.getShooterMotorSpeed());
 

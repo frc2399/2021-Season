@@ -44,6 +44,11 @@ public class Intake extends Subsystem {
     RobotMap.Intake.SOL.set(DoubleSolenoid.Value.kReverse);
   }
 
+  public void toggleIntake(){
+    System.out.println("toggleIntake");
+    RobotMap.Intake.SOL.toggle();;
+  } 
+
   //set default command
   public void initDefaultCommand(Command c) {
     setDefaultCommand(c);

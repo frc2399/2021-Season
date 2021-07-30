@@ -71,11 +71,12 @@ public class OI {
 
     joystickButton[12].whileHeld(new ExtendIntake(in, this));
     joystickButton[11].whileHeld(new RetractIntake(in, this));
+    joystickButton[8].whenPressed(new ToggleIntake(in, this));
 
     joystickButton[10].whileHeld(new IndexAwayShooter(ind, this));
     joystickButton[2].whileHeld(new IndexTowardsShooter(ind, this));
 
-    
+    joystickButton[7].whenPressed(new driveForwardGivenDistance(dt, 10.0, 0.2));
   }
 
   public static Button[] getButtons(Joystick controller) {

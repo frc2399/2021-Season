@@ -45,7 +45,7 @@ public class RobotMap {
 
   public interface Shooter{
     public static TalonSRX SHOOTER_UPPER =  new TalonSRX(6);
-    public static TalonSRX SHOOTER_LOWER = new TalonSRX(8);
+    public static TalonSRX SHOOTER_LOWER = new TalonSRX(5);
   }
 
   public interface Indexer {
