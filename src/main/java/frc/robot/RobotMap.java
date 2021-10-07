@@ -44,14 +44,16 @@ public class RobotMap {
 
 
   public interface Shooter{
-    public static TalonSRX SHOOTER_UPPER =  new TalonSRX(6);
-    public static TalonSRX SHOOTER_LOWER = new TalonSRX(5);
+    public static TalonSRX PRIMARY_SHOOTER_UPPER =  new TalonSRX(7);
+    public static TalonSRX PRIMARY_SHOOTER_LOWER = new TalonSRX(9);
+    public static TalonSRX SECONDARY_SHOOTER_UPPER = new TalonSRX(6);
+    public static TalonSRX SECONDARY_SHOOTER_LOWER = new TalonSRX(8);
   }
 
   public interface Indexer {
 
-    public static TalonSRX INDEXER_UPPER = new TalonSRX(7);
-    public static TalonSRX INDEXER_LOWER = new TalonSRX(9);
+    public static TalonSRX INDEXER = new TalonSRX(5);
+
 
     public static double INDEXER_SPEED = 1.0;
   }
