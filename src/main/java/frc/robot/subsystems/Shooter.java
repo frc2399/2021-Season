@@ -50,8 +50,8 @@ public class Shooter extends Subsystem {
   public Shooter() {
       
     //initialize motor controllers
-    bottom = RobotMap.Shooter.SHOOTER_LOWER;
-    top = RobotMap.Shooter.SHOOTER_UPPER;
+    bottom = RobotMap.Shooter.PRIMARY_SHOOTER_LOWER;
+    top = RobotMap.Shooter.PRIMARY_SHOOTER_UPPER;
 
     bottom.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PID_IDX, CAN_TIMEOUT);
     top.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PID_IDX, CAN_TIMEOUT);
@@ -108,13 +108,26 @@ public class Shooter extends Subsystem {
     SmartDashboard.putNumber("bottomSpeed ", bottomSpeed);
   }
 
-  //set bottom motor speed
-  public void setBottomShooterSpeed(double speed){
+  //set bottom primary motor speed
+  public void setLowerPrimaryShooterSpeed(double speed){
     bottom.set(ControlMode.PercentOutput, speed * - 1.0);
   }
 
-  //set top motor speed
-  public void setTopShooterSpeed(double speed){
+  //set top secondary motor speed
+  public void setUpperPrimaryShooterSpeed(double speed){
+    top.set(ControlMode.PercentOutput, -0.25 *speed * 1.0);
+    if (speed != 0.0)
+    {
+        System.out.println("top shooter");
+    }
+  }
+   //set bottom secondary motor speed
+   public void setLowerSecondaryShooterSpeed(double speed){
+    bottom.set(ControlMode.PercentOutput, speed * - 1.0);
+  }
+
+  //set top secondary motor speed
+  public void setUpperSecondaryShooterSpeed(double speed){
     top.set(ControlMode.PercentOutput, -0.25 *speed * 1.0);
     if (speed != 0.0)
     {
