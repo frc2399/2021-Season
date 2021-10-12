@@ -41,8 +41,8 @@ public class ShootConstant extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //set speed to run bottom and top shooter axles
-        sh.setBottomShooterSpeed(bottomPercent);
-        sh.setTopShooterSpeed(topPercent);
+        // sh.setBottomShooterSpeed(bottomPercent);
+        // sh.setTopShooterSpeed(topPercent);
 
         System.out.println("in shooter constant execute");
         // System.out.println("Bottom RPS: " + sh.getBottomRotationsPerSecond());
