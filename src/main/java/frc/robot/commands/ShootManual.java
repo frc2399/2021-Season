@@ -43,6 +43,7 @@ public class ShootManual extends Command {
         
 
         sh.setLowerPrimaryShooterSpeed(sh.bottomSpeed);
+        System.out.println("set primary shooter lower speed");
         sh.setUpperPrimaryShooterSpeed(sh.topSpeed);
 
         sh.setLowerSecondaryShooterSpeed(sh.bottomSpeed);
