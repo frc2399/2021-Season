@@ -17,6 +17,7 @@ import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.ShooterSecondary;
 import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.Compressor;
 import frc.robot.commands.ShootDefault;
@@ -40,6 +41,7 @@ public class Robot extends TimedRobot {
   //instantiate global variables
   public static Drivetrain dt;
   public static Shooter sh;
+  public static ShooterSecondary sh_secondary;
   public static OI oi;
   public static Intake in;
   public static Indexer ind;
@@ -62,15 +64,16 @@ public class Robot extends TimedRobot {
     //initialize variables
     dt = new Drivetrain();
     sh = new Shooter();
+    sh_secondary = new ShooterSecondary();
     in = new Intake();
     ind = new Indexer();
-    oi = new OI(dt, sh, in, ind);
+    oi = new OI(dt, sh, sh_secondary, in, ind);
 
     //set initial default command for drive train to default drive
     dt.initDefaultCommand(oi.defaultDrive());
 
     //set default command for shooter to default shoot
-    sh.initDefaultCommand(new ShootDefault(sh, oi));
+    sh.initDefaultCommand(new ShootDefault(sh, sh_secondary, oi));
     
     //set default command for intake to default shoot
     in.initDefaultCommand(new IntakeDefault(in, oi));

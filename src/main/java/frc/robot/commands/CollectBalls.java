@@ -9,28 +9,30 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
-import frc.robot.subsystems.Shooter;
-import frc.robot.subsystems.ShooterSecondary;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Indexer;
 
-public class ShootManual extends Command {
+public class CollectBalls extends Command {
 
     //insantiate global variables
-    Shooter sh;
-
+    Intake in;
     OI oi;
+    Indexer ind;
     
     //constructor
-	public ShootManual(Shooter shooter, OI operatorInterface) {
+	public CollectBalls(Intake intake, OI operatorInterface, Indexer indexer) {
         
         //initialize variables
-        sh = shooter;
+        in = intake;
         oi = operatorInterface;
+        ind = indexer;
 
-        //needs shooter to run
-        requires(sh);
+        //needs intake to run
+        requires(in);
+        requires(ind);
         
         //set command to be interruptible
-		//setInterruptible(true);
+		setInterruptible(true);
     }
     
     // Called just before this Command runs the first time
@@ -39,18 +41,11 @@ public class ShootManual extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //set speed to run bottom and top shooter axles
-        // sh.setBottomShooterSpeed(oi.leftShoulder());
-        // sh.setTopShooterSpeed(oi.rightShoulder());
-        
-
-        sh.setLowerPrimaryShooterSpeed(sh.bottomSpeed);
-        //System.out.println("set primary shooter lower speed");
-        sh.setUpperPrimaryShooterSpeed(sh.topSpeed);
-
-        // sh_secondary.setLowerSecondaryShooterSpeed(sh.bottomSpeed);
-        // sh_secondary.setUpperSecondaryShooterSpeed(sh.topSpeed);
-    
+        //set intake speed to 0
+        //System.out.println("default intake");
+        in.setIntakeSpeed(1);
+        in.extendIntake();
+        ind.setIndexerSpeed(1);
     }
 
     // Make this return true when this Command no longer needs to run execute()

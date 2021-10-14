@@ -12,22 +12,24 @@ import frc.robot.OI;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.ShooterSecondary;
 
-public class ShootManual extends Command {
+public class FeedShooter extends Command {
 
     //insantiate global variables
-    Shooter sh;
+    ShooterSecondary sh_secondary;
+    double sp;
 
     OI oi;
     
     //constructor
-	public ShootManual(Shooter shooter, OI operatorInterface) {
+	public FeedShooter(ShooterSecondary shooter_secondary, OI operatorInterface, double speed) {
         
         //initialize variables
-        sh = shooter;
+        sh_secondary = shooter_secondary;
+        sp = speed;
         oi = operatorInterface;
 
         //needs shooter to run
-        requires(sh);
+        requires(shooter_secondary);
         
         //set command to be interruptible
 		//setInterruptible(true);
@@ -44,9 +46,9 @@ public class ShootManual extends Command {
         // sh.setTopShooterSpeed(oi.rightShoulder());
         
 
-        sh.setLowerPrimaryShooterSpeed(sh.bottomSpeed);
+        sh_secondary.setLowerSecondaryShooterSpeed(sp);
         //System.out.println("set primary shooter lower speed");
-        sh.setUpperPrimaryShooterSpeed(sh.topSpeed);
+        sh_secondary.setUpperSecondaryShooterSpeed(sp);
 
         // sh_secondary.setLowerSecondaryShooterSpeed(sh.bottomSpeed);
         // sh_secondary.setUpperSecondaryShooterSpeed(sh.topSpeed);

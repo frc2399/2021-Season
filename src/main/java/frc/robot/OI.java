@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.SlewRateLimiter;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.RobotMap.OperatorInterface;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
@@ -39,7 +40,7 @@ public class OI {
   public static final double DEADBAND_WIDTH = 0.1;
 
   //constructor (takes drive train)
-  public OI(Drivetrain dt, Shooter sh, Intake in, Indexer ind) {
+  public OI(Drivetrain dt, Shooter sh, ShooterSecondary sh_secondary, Intake in, Indexer ind) {
     
     //initialize variables
     xBox = RobotMap.OperatorInterface.XBOX;
@@ -63,21 +64,23 @@ public class OI {
     // joystickButton[3].whileHeld(new ShootConstant(sh, this, 0.5, 0.5));
     // joystickButton[4].whileHeld(new ShootConstant(sh, this, 0.25, 0.25));
 
-    joystickButton[1].whileHeld(new ShootManual(sh, this));
+    joystickButton[1].whenPressed(new FeedShooter(sh_secondary, this, 0.1));
     joystickButton[3].whenPressed(new DecreaseBottomSpeed(sh));
     joystickButton[4].whenPressed(new DecreaseTopSpeed(sh));
     joystickButton[5].whenPressed(new IncreaseBottomSpeed(sh));
     joystickButton[6].whenPressed(new IncreaseTopSpeed(sh));
 
-    joystickButton[9].whileHeld(new IntakeMotor(in, this));
-    joystickButton[12].whileHeld(new ExtendIntake(in, this));
-    joystickButton[11].whileHeld(new RetractIntake(in, this));
-    //joystickButton[8].whenPressed(new Indexer(in, this));
+    joystickButton[9].whileHeld(new FeederBack(sh_secondary, this, 0.1));
+    //joystickButton[12].whileHeld(new ExtendIntake(in, this));
+    joystickButton[11].whileHeld(new IntakeBack(in, this, -0.1));
+    joystickButton[8].whenPressed(new ShooterOff(sh, this));
 
     joystickButton[10].whileHeld(new IndexAwayShooter(ind, this));
-    joystickButton[2].whileHeld(new IndexTowardsShooter(ind, this));
+    joystickButton[2].whileHeld(new CollectBalls(in, this, ind));
 
-    joystickButton[7].whenPressed(new driveForwardGivenDistance(dt, 10.0, 0.2));
+    joystickButton[7].whileHeld(new ShootManual(sh, this));
+
+    
   }
 
   public static Button[] getButtons(Joystick controller) {

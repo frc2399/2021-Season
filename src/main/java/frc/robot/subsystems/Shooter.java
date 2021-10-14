@@ -116,24 +116,24 @@ public class Shooter extends Subsystem {
   //set top secondary motor speed
   public void setUpperPrimaryShooterSpeed(double speed){
     top.set(ControlMode.PercentOutput, -0.25 *speed * 1.0);
-    if (speed != 0.0)
-    {
-        System.out.println("top shooter");
-    }
+    // if (speed != 0.0)
+    // {
+    //     System.out.println("top shooter");
+    // }
   }
    //set bottom secondary motor speed
-   public void setLowerSecondaryShooterSpeed(double speed){
-    bottom.set(ControlMode.PercentOutput, speed * - 1.0);
-  }
+  //  public void setLowerSecondaryShooterSpeed(double speed){
+  //   bottom.set(ControlMode.PercentOutput, speed * - 1.0);
+  // }
 
-  //set top secondary motor speed
-  public void setUpperSecondaryShooterSpeed(double speed){
-    top.set(ControlMode.PercentOutput, -0.25 *speed * 1.0);
-    if (speed != 0.0)
-    {
-        System.out.println("top shooter");
-    }
-  }
+  // //set top secondary motor speed
+  // public void setUpperSecondaryShooterSpeed(double speed){
+  //   top.set(ControlMode.PercentOutput, -0.25 *speed * 1.0);
+  //   if (speed != 0.0)
+  //   {
+  //       System.out.println("top shooter");
+  //   }
+  // }
 
   public double toRotationsPerSecondFromNativeTalon(double talonNative) {
     return talonNative * ((Math.PI / ENCODER_TICKS_PER_REVOLUTION)) * GEAR_RATIO * TALON_100MS_IN_1S;

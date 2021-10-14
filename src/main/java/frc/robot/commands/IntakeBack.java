@@ -11,21 +11,21 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.subsystems.Intake;
 
-public class IntakeBall extends Command {
+public class IntakeBack extends Command {
 
     //insantiate global variables
     Intake in;
     OI oi;
-	double percent;
+	double sp;
     
     
     //constructor
-	public IntakeBall(Intake intake, OI operatorInterface, double per) {
+	public IntakeBack(Intake intake, OI operatorInterface, double speed) {
         
         //initialize variables
         in = intake;
         oi = operatorInterface;
-        percent = per;
+        sp = speed;
 
         //needs intake to run
         requires(in);
@@ -41,8 +41,8 @@ public class IntakeBall extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //set speed to run intake
-        in.setIntakeSpeed(percent);
-        System.out.println("hi");
+        in.setIntakeSpeed(sp);
+        //System.out.println("hi");
     }
 
     // Make this return true when this Command no longer needs to run execute()
