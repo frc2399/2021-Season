@@ -12,25 +12,25 @@ import frc.robot.OI;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.ShooterSecondary;
 
-public class ShootManual extends Command {
+public class ShooterSecondaryDefault extends Command {
 
     //insantiate global variables
-    Shooter sh;
+    ShooterSecondary sh_secondary;
 
     OI oi;
     
     //constructor
-	public ShootManual(Shooter shooter, OI operatorInterface) {
+	public ShooterSecondaryDefault(ShooterSecondary shooter_secondary, OI operatorInterface) {
         
         //initialize variables
-        sh = shooter;
+        sh_secondary = shooter_secondary;
         oi = operatorInterface;
 
         //needs shooter to run
-        requires(sh);
+        requires(sh_secondary);
         
         //set command to be interruptible
-		//setInterruptible(true);
+		setInterruptible(true);
     }
     
     // Called just before this Command runs the first time
@@ -40,17 +40,13 @@ public class ShootManual extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //set speed to run bottom and top shooter axles
-        // sh.setBottomShooterSpeed(oi.leftShoulder());
-        // sh.setTopShooterSpeed(oi.rightShoulder());
-        
+        // sh.setLowerPrimaryShooterSpeed(0.0);
+        // sh.setUpperPrimaryShooterSpeed(0.0);
 
-        sh.setLowerPrimaryShooterSpeed(sh.bottomSpeed);
-        //System.out.println("set primary shooter lower speed");
-        sh.setUpperPrimaryShooterSpeed(sh.topSpeed);
+        sh_secondary.setLowerSecondaryShooterSpeed(0.0);
+        sh_secondary.setUpperSecondaryShooterSpeed(0.0);
 
-        // sh_secondary.setLowerSecondaryShooterSpeed(sh.bottomSpeed);
-        // sh_secondary.setUpperSecondaryShooterSpeed(sh.topSpeed);
-    
+
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -32,8 +32,8 @@ public class Shooter extends Subsystem {
   private static final int ENCODER_TICKS_PER_REVOLUTION = 4096;
   private static final double GEAR_RATIO = 84.0 / 54.0;
   private static final double TALON_100MS_IN_1S = 10.0;
-  public double topSpeed = 0.0;
-  public double bottomSpeed = 0.0;
+  public double topSpeed = 0.1;
+  public double bottomSpeed = 0.1;
   // private static final int WHEEL_DIAMETER = 6;
   // private static final double C_100MS_IN_1S = 10.0;
 
