@@ -21,6 +21,7 @@ import frc.robot.subsystems.ShooterSecondary;
 import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.Compressor;
 import frc.robot.commands.ShootDefault;
+import frc.robot.commands.ShooterSecondaryDefault;
 import frc.robot.commands.IndexerDefault;
 // import edu.wpi.first.cameraserver.CameraServer;
 // import edu.wpi.cscore.UsbCamera;
@@ -73,7 +74,9 @@ public class Robot extends TimedRobot {
     dt.initDefaultCommand(oi.defaultDrive());
 
     //set default command for shooter to default shoot
-    sh.initDefaultCommand(new ShootDefault(sh, sh_secondary, oi));
+    sh.initDefaultCommand(new ShootDefault(sh, oi));
+
+    sh_secondary.initDefaultCommand(new ShooterSecondaryDefault(sh_secondary, oi));
     
     //set default command for intake to default shoot
     in.initDefaultCommand(new IntakeDefault(in, oi));

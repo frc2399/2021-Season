@@ -10,8 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.ShooterSecondary;
 
-public class ShooterOff extends Command {
+public class ShootOn extends Command {
 
     //insantiate global variables
     Shooter sh;
@@ -19,7 +20,7 @@ public class ShooterOff extends Command {
     OI oi;
     
     //constructor
-	public ShooterOff(Shooter shooter, OI operatorInterface) {
+	public ShootOn(Shooter shooter, OI operatorInterface) {
         
         //initialize variables
         sh = shooter;
@@ -43,12 +44,9 @@ public class ShooterOff extends Command {
         // sh.setTopShooterSpeed(oi.rightShoulder());
         
 
-        sh.setLowerPrimaryShooterSpeed(0.0);
-        sh.bottomSpeed = 0;
-        System.out.println("Shooter off");
+        sh.setLowerPrimaryShooterSpeed(sh.bottomSpeed);
         //System.out.println("set primary shooter lower speed");
-        sh.setUpperPrimaryShooterSpeed(0.0);
-        sh.topSpeed = 0;
+        sh.setUpperPrimaryShooterSpeed(sh.topSpeed);
 
         // sh_secondary.setLowerSecondaryShooterSpeed(sh.bottomSpeed);
         // sh_secondary.setUpperSecondaryShooterSpeed(sh.topSpeed);

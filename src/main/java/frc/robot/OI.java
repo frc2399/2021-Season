@@ -64,7 +64,7 @@ public class OI {
     // joystickButton[3].whileHeld(new ShootConstant(sh, this, 0.5, 0.5));
     // joystickButton[4].whileHeld(new ShootConstant(sh, this, 0.25, 0.25));
 
-    joystickButton[1].whenPressed(new FeedShooter(sh_secondary, this, 0.1));
+    joystickButton[1].whenPressed(new FeedShooter(sh_secondary, this, 0.3));
     joystickButton[3].whenPressed(new DecreaseBottomSpeed(sh));
     joystickButton[4].whenPressed(new DecreaseTopSpeed(sh));
     joystickButton[5].whenPressed(new IncreaseBottomSpeed(sh));
@@ -78,7 +78,7 @@ public class OI {
     joystickButton[10].whileHeld(new IndexAwayShooter(ind, this));
     joystickButton[2].whileHeld(new CollectBalls(in, this, ind));
 
-    joystickButton[7].whileHeld(new ShootManual(sh, this));
+    joystickButton[7].whenPressed(new ShootOn(sh, this));
 
     
   }

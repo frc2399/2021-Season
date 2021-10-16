@@ -16,21 +16,18 @@ public class ShootDefault extends Command {
 
     //insantiate global variables
     Shooter sh;
-    ShooterSecondary sh_secondary;
 
     OI oi;
     
     //constructor
-	public ShootDefault(Shooter shooter, ShooterSecondary shooter_secondary, OI operatorInterface) {
+	public ShootDefault(Shooter shooter, OI operatorInterface) {
         
         //initialize variables
         sh = shooter;
-        sh_secondary = shooter_secondary;
         oi = operatorInterface;
 
         //needs shooter to run
         requires(sh);
-        requires(sh_secondary);
         
         //set command to be interruptible
 		setInterruptible(true);
@@ -43,11 +40,11 @@ public class ShootDefault extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //set speed to run bottom and top shooter axles
-        sh.setLowerPrimaryShooterSpeed(0.0);
-        sh.setUpperPrimaryShooterSpeed(0.0);
+        sh.setLowerPrimaryShooterSpeed(sh.bottomSpeed);
+        sh.setUpperPrimaryShooterSpeed(sh.topSpeed);
 
-        sh_secondary.setLowerSecondaryShooterSpeed(0.0);
-        sh_secondary.setUpperSecondaryShooterSpeed(0.0);
+        // sh_secondary.setLowerSecondaryShooterSpeed(0.0);
+        // sh_secondary.setUpperSecondaryShooterSpeed(0.0);
 
 
     }

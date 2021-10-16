@@ -43,9 +43,9 @@ public class CollectBalls extends Command {
     protected void execute() {
         //set intake speed to 0
         //System.out.println("default intake");
-        in.setIntakeSpeed(1);
+        in.setIntakeSpeed(-1);
         in.extendIntake();
-        ind.setIndexerSpeed(1);
+        ind.setIndexerSpeed(-1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
