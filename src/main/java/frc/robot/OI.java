@@ -73,7 +73,7 @@ public class OI {
     joystickButton[9].whileHeld(new FeederBack(sh_secondary, this, RobotMap.SecondaryShooter.FEEDERBACK_SPEED));
     //joystickButton[12].whileHeld(new ExtendIntake(in, this));
     joystickButton[11].whileHeld(new IntakeBack(in, this, -RobotMap.Intake.INTAKE_SPEED));
-    joystickButton[8].whenPressed(new ShooterOff(sh, this));
+    joystickButton[12].whenPressed(new ShooterOff(sh, this));
 
     joystickButton[10].whileHeld(new IndexAwayShooter(ind, this));
     joystickButton[2].whileHeld(new CollectBalls(in, this, ind));

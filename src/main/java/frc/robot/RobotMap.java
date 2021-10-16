@@ -80,7 +80,7 @@ public class RobotMap {
   
 
   public interface Intake {
-    public static DoubleSolenoid SOL = new DoubleSolenoid(1, 0, 1);
+    public static DoubleSolenoid SOL = new DoubleSolenoid(1, 2, 1);
     public static TalonSRX INTAKE_MOTOR = new TalonSRX(10);
 
     public static double INTAKE_SPEED = 0.1;
