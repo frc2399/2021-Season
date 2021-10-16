@@ -41,7 +41,7 @@ public class IntakeBack extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //set speed to run intake
-        in.setIntakeSpeed(sp);
+        in.setIntakeSpeed(-sp);
         //System.out.println("hi");
     }
 

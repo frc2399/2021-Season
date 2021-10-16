@@ -48,7 +48,7 @@ public class FeederBack extends Command {
 
         sh_secondary.setLowerSecondaryShooterSpeed(sp);
         //System.out.println("set primary shooter lower speed");
-        sh_secondary.setUpperSecondaryShooterSpeed(sp);
+        sh_secondary.setUpperSecondaryShooterSpeed(-sp);
 
         // sh_secondary.setLowerSecondaryShooterSpeed(sh.bottomSpeed);
         // sh_secondary.setUpperSecondaryShooterSpeed(sh.topSpeed);

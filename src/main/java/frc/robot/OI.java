@@ -64,16 +64,16 @@ public class OI {
     // joystickButton[3].whileHeld(new ShootConstant(sh, this, 0.5, 0.5));
     // joystickButton[4].whileHeld(new ShootConstant(sh, this, 0.25, 0.25));
 
-    joystickButton[1].whenPressed(new FeedShooter(sh_secondary, this, 0.3));
+    joystickButton[1].whenPressed(new FeedShooter(sh_secondary, this, RobotMap.SecondaryShooter.FEEDERSHOOTER_SPEED));
     joystickButton[3].whenPressed(new DecreaseBottomSpeed(sh));
     joystickButton[4].whenPressed(new DecreaseTopSpeed(sh));
     joystickButton[5].whenPressed(new IncreaseBottomSpeed(sh));
     joystickButton[6].whenPressed(new IncreaseTopSpeed(sh));
 
-    joystickButton[9].whileHeld(new FeederBack(sh_secondary, this, 0.1));
+    joystickButton[9].whileHeld(new FeederBack(sh_secondary, this, RobotMap.SecondaryShooter.FEEDERBACK_SPEED));
     //joystickButton[12].whileHeld(new ExtendIntake(in, this));
-    joystickButton[11].whileHeld(new IntakeBack(in, this, -0.1));
-    joystickButton[8].whenPressed(new ShooterOff(sh, this));
+    joystickButton[11].whileHeld(new IntakeBack(in, this, -RobotMap.Intake.INTAKE_SPEED));
+    joystickButton[12].whenPressed(new ShooterOff(sh, this));
 
     joystickButton[10].whileHeld(new IndexAwayShooter(ind, this));
     joystickButton[2].whileHeld(new CollectBalls(in, this, ind));
