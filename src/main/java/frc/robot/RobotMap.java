@@ -48,6 +48,13 @@ public class RobotMap {
     public static TalonSRX PRIMARY_SHOOTER_LOWER = new TalonSRX(8);
     public static TalonSRX SECONDARY_SHOOTER_UPPER = new TalonSRX(9);
     public static TalonSRX SECONDARY_SHOOTER_LOWER = new TalonSRX(6);
+
+    public static double SHOOTER_SPEED_INCREMENT = 0.1;
+  }
+
+  public interface SecondaryShooter{
+    public static double FEEDERBACK_SPEED = 0.1;
+    public static double FEEDSHOOTER_SPEED = 0.3;
   }
 
   public interface Indexer {
@@ -75,6 +82,8 @@ public class RobotMap {
   public interface Intake {
     public static DoubleSolenoid SOL = new DoubleSolenoid(1, 0, 1);
     public static TalonSRX INTAKE_MOTOR = new TalonSRX(10);
+
+    public static double INTAKE_SPEED = 0.1;
 
   }
   

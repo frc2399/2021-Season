@@ -66,7 +66,7 @@ public class Shooter extends Subsystem {
   //ready ball
   public void increaseTopSpeed()
   {
-    topSpeed += 0.1;
+    topSpeed += RobotMap.Shooter.SHOOTER_SPEED_INCREMENT;
     if (topSpeed >= 1)
     {
       topSpeed = 1;
@@ -77,7 +77,7 @@ public class Shooter extends Subsystem {
 
   public void decreaseTopSpeed()
   {
-    topSpeed -= 0.1;
+    topSpeed -= RobotMap.Shooter.SHOOTER_SPEED_INCREMENT;
     if (topSpeed <= -1)
     {
       topSpeed = -1;
@@ -88,7 +88,7 @@ public class Shooter extends Subsystem {
 
   public void increaseBottomSpeed()
   {
-    bottomSpeed += 0.1;
+    bottomSpeed += RobotMap.Shooter.SHOOTER_SPEED_INCREMENT;
     if (bottomSpeed >= 1)
     {
       bottomSpeed = 1;
@@ -99,7 +99,7 @@ public class Shooter extends Subsystem {
 
   public void decreaseBottomSpeed()
   {
-    bottomSpeed -= 0.1;
+    bottomSpeed -= RobotMap.Shooter.SHOOTER_SPEED_INCREMENT;
     if (bottomSpeed <= -1)
     {
       bottomSpeed = -1;

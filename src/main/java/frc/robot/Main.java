@@ -26,7 +26,7 @@ public final class Main {
   public static void main(String... args) {
     System.out.println("Bottom RPS: robot starting");
     RobotBase.startRobot(Robot::new);
-    System.out.println("hi");
-    System.out.println("test");
+    // System.out.println("hi");
+    // System.out.println("test");
   }
 }
