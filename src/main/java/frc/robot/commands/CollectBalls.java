@@ -41,10 +41,7 @@ public class CollectBalls extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //set intake speed to 0
-        //System.out.println("default intake");
         in.setIntakeSpeed(1);
-        //in.extendIntake();
         ind.setIndexerSpeed(-1);
     }
 

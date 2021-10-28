@@ -42,7 +42,6 @@ public class IntakeBack extends Command {
     protected void execute() {
         //set speed to run intake
         in.setIntakeSpeed(-sp);
-        //System.out.println("hi");
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -27,9 +27,6 @@ public class ShooterOff extends Command {
 
         //needs shooter to run
         requires(sh);
-        
-        //set command to be interruptible
-		//setInterruptible(true);
     }
     
     // Called just before this Command runs the first time
@@ -39,20 +36,12 @@ public class ShooterOff extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //set speed to run bottom and top shooter axles
-        // sh.setBottomShooterSpeed(oi.leftShoulder());
-        // sh.setTopShooterSpeed(oi.rightShoulder());
-        
 
         sh.setLowerPrimaryShooterSpeed(0.0);
         sh.bottomSpeed = 0;
         System.out.println("Shooter off");
-        //System.out.println("set primary shooter lower speed");
         sh.setUpperPrimaryShooterSpeed(0.0);
         sh.topSpeed = 0;
-
-        // sh_secondary.setLowerSecondaryShooterSpeed(sh.bottomSpeed);
-        // sh_secondary.setUpperSecondaryShooterSpeed(sh.topSpeed);
-    
     }
 
     // Make this return true when this Command no longer needs to run execute()

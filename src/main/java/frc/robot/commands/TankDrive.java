@@ -43,8 +43,6 @@ public class TankDrive extends Command {
 
         //call drivePercent with left percent and right percent speed
         dt.drivePercent(leftPercent, rightPercent);
-
-        //dt.setSpark(oi.rightXAxis());
     }
 
     // Make this return true when this Command no longer needs to run execute()

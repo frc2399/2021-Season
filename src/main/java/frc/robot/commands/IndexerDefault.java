@@ -26,9 +26,6 @@ public class IndexerDefault extends Command {
 
         //needs intake to run
         requires(ind);
-        
-        //set command to be interruptible
-		//setInterruptible(true);
     }
     
     // Called just before this Command runs the first time

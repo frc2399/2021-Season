@@ -8,7 +8,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-// import frc.robot.RobotMap.Drivetrain;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj.Timer;
 
@@ -43,9 +42,6 @@ public class driveForwardForOneSecond extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //call drivePercent with left percent and right percent speed
-        // System.out.println("Left " + leftSideSpeed);
-        // System.out.println("right " + rightSideSpeed);
         dt.drivePercent(0.3, 0.3);
     }
 

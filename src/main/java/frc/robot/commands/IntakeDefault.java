@@ -38,7 +38,6 @@ public class IntakeDefault extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //set intake speed to 0
-        //System.out.println("default intake");
         in.setIntakeSpeed(0);
         in.retractIntake();
     }

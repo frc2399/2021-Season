@@ -23,9 +23,6 @@ public class DecreaseTopSpeed extends Command {
 
         //needs intake to run
         requires(shooter);
-        
-        //set command to be interruptible
-		//setInterruptible(true);
     }
     
     // Called just before this Command runs the first time
@@ -34,9 +31,6 @@ public class DecreaseTopSpeed extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //set speed to run intake
-        // sh.setBottomIndexerSpeed(bottomPercent);
-        // sh.setTopIndexerSpeed(topPercent);
         shooter.decreaseTopSpeed();
     }
 

@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.IntakeDefault;
-//import frc.robot.commands.KajDrive;
 import frc.robot.commands.driveForwardForOneSecond;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Indexer;
@@ -23,19 +22,11 @@ import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.Compressor;
 import frc.robot.commands.ShootDefault;
 import frc.robot.commands.ShooterSecondaryDefault;
-//import frc.robot.commands.IncreaseTopSpeed;
 import frc.robot.commands.IndexerDefault;
-// import edu.wpi.first.cameraserver.CameraServer;
-// import edu.wpi.cscore.UsbCamera;
 
 
 import com.revrobotics.CANEncoder;
 
-//  class ShootBall extends CommandGroup {
-//    void ShootBall(DriveTrain dt){ 
-//   addSequential(new driveBackwardForOneSecond(dt),2.0);
-//    }
-//  }
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -57,8 +48,6 @@ public class Robot extends TimedRobot {
 
   NetworkTableEntry xAng, dist;
   double xAngle, distance;
-
-  //AHRS navx = new AHRS(SerialPort.Port.kUSB);
 
   
   /**
@@ -89,18 +78,10 @@ public class Robot extends TimedRobot {
 
     ind.initDefaultCommand(new IndexerDefault(ind, oi));
 
-    // NetworkTableInstance inst = NetworkTableInstance.getDefault();
-    // NetworkTable table = inst.getTable("database");
-
     // instantiate the command used for the autonomous period
+    
+    //TODO: change seconds for driveForwardForOneSecond
      autonomousCommand = new driveForwardForOneSecond(dt);
-
-    //PowerDistributionPanel example = new PowerDistributionPanel(0);
-
-    //compressor = new Compressor(1);
-
-    // UsbCamera cam1 = CameraServer.getInstance().startAutomaticCapture();
-  // cam1.setResolution(321 * 2, 241 * 2);
   }
 
   /**
@@ -127,15 +108,6 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("right velocity", right_velocity);
     SmartDashboard.putNumber("left position", left_position);
     SmartDashboard.putNumber("right position", right_position);
-
-
-    // private CANEncoder encoder2 = new CANEncoder(dt.frontRightController);
-
-    // And then you can use encoder.getPosition() and encoder.getVelocity() for motor rotations (distance) and motor velocity (rpm).
-
-
-    // System.out.println("speed " + oi.getShooterMotorSpeed());
-
   }
 
   /**
@@ -189,11 +161,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    
-    // xAngle = xAng.getDouble(1);
-    // distance = dist.getDouble(1);
-
-    //System.out.println("speed " + oi.getShooterMotorSpeed());
   }
 
     @Override

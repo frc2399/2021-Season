@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.SlewRateLimiter;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.RobotMap.OperatorInterface;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
@@ -51,18 +50,9 @@ public class OI {
 
     joystick = RobotMap.OperatorInterface.JOYSTICK;
     joystickButton = getButtons(joystick);
-    // joystickButton[1].whileHeld(new IntakeBall(in, this, 1));
-    // joystickButton[2].whileHeld(new IntakeBall(in, this, -1));
-
-    // joystickButton[0].whileHeld(new ShootConstant(sh, this, 1, 1)); // trigger is button 0 ?
-    // button one is the trigger
+ 
     System.out.println("length " + joystickButton.length);
     System.out.println("joystickButton[0] " + joystickButton[0]);
-    // joystickButton[0].whileHeld(new ShootConstant(sh, this, 1, 1));
-    // joystickButton[1].whileHeld(new ShootConstant(sh, this, 1, 1));
-    // joystickButton[2].whileHeld(new ShootConstant(sh, this, 0.75, 0.75));
-    // joystickButton[3].whileHeld(new ShootConstant(sh, this, 0.5, 0.5));
-    // joystickButton[4].whileHeld(new ShootConstant(sh, this, 0.25, 0.25));
 
     joystickButton[1].whileHeld(new FeedShooter(sh_secondary, this, RobotMap.SecondaryShooter.FEEDSHOOTER_SPEED));
     joystickButton[3].whenPressed(new DecreaseBottomSpeed(sh));
@@ -71,10 +61,10 @@ public class OI {
     joystickButton[6].whenPressed(new IncreaseTopSpeed(sh));
 
     joystickButton[9].whileHeld(new FeederBack(sh_secondary, this, RobotMap.SecondaryShooter.FEEDERBACK_SPEED));
-    //joystickButton[12].whileHeld(new ExtendIntake(in, this));
     joystickButton[11].whileHeld(new IndexAwayShooter(ind, this));
     joystickButton[12].whileHeld(new IndexTowardsShooter(ind, this));
 
+    //TODO; ShooterOff command didn't turn the shooter off
     joystickButton[10].whileHeld(new ShooterOff(sh, this));
     joystickButton[2].whileHeld(new CollectBalls(in, this, ind));
 
@@ -136,7 +126,6 @@ public class OI {
   public double getSlewRateLimiter()
   {
     slewRateLimiter = (joystick.getRawAxis(3) + 1 ) / 2. ;
-    // System.out.println("motor speed " + shooterMotorSpeed);
     return slewRateLimiter;
   }
 }

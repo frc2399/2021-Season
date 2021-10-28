@@ -31,7 +31,6 @@ public class ShooterSecondary extends Subsystem {
   public ShooterSecondary() {
 
     //initialize variables (motor controllers with IDs)
-    // motorController = RobotMap.Indexer.INDEXER;
 
     secondary_shooter_lower = RobotMap.Shooter.SECONDARY_SHOOTER_LOWER;
     secondary_shooter_upper = RobotMap.Shooter.SECONDARY_SHOOTER_UPPER;
@@ -54,13 +53,6 @@ public class ShooterSecondary extends Subsystem {
   {
     secondary_shooter_upper.set(ControlMode.PercentOutput, speed * 1.0);
   }
-
-//   //set motor controllers to percents
-//  public void index(double spinPercent) {
-//   //TODO: forward constant, also add definition of forward and backward to OI (-1 or 1)
-//   // double spinPercentActual = spinPercent * 1;
-//   secondary_shooter_lower.set(ControlMode.PercentOutput, spinPercent * -1.0);
-//   secondary_shooter_upper.set(ControlMode.PercentOutput, spinPercent * -1.0);
 
   //set default command
   public void initDefaultCommand(Command c) {
