@@ -10,29 +10,28 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Indexer;
 
-public class CollectBalls extends Command {
+public class IntakeForward extends Command {
 
     //insantiate global variables
     Intake in;
     OI oi;
-    Indexer ind;
+	double sp;
+    
     
     //constructor
-	public CollectBalls(Intake intake, OI operatorInterface, Indexer indexer) {
+	public IntakeForward(Intake intake, OI operatorInterface, double speed) {
         
         //initialize variables
         in = intake;
         oi = operatorInterface;
-        ind = indexer;
+        sp = speed;
 
         //needs intake to run
         requires(in);
-        requires(ind);
         
         //set command to be interruptible
-		setInterruptible(true);
+		//setInterruptible(true);
     }
     
     // Called just before this Command runs the first time
@@ -41,11 +40,9 @@ public class CollectBalls extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //set intake speed to 0
-        //System.out.println("default intake");
-        in.setIntakeSpeed(1);
-        //in.extendIntake();
-        ind.setIndexerSpeed(-1);
+        //set speed to run intake
+        in.setIntakeSpeed(sp);
+        //System.out.println("hi");
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -10,7 +10,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.subsystems.Shooter;
-import frc.robot.subsystems.ShooterSecondary;
 
 public class ShootDefault extends Command {
 
@@ -41,7 +40,10 @@ public class ShootDefault extends Command {
     protected void execute() {
         //set speed to run bottom and top shooter axles
         sh.setLowerPrimaryShooterSpeed(sh.bottomSpeed);
+        System.out.println("primary shooter bottom speed" + sh.bottomSpeed);
         sh.setUpperPrimaryShooterSpeed(sh.topSpeed);
+        System.out.println("primary shooter top speed" + sh.topSpeed);
+
 
         // sh_secondary.setLowerSecondaryShooterSpeed(0.0);
         // sh_secondary.setUpperSecondaryShooterSpeed(0.0);
