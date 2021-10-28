@@ -12,7 +12,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.IntakeDefault;
-// import frc.robot.commands.driveForwardForOneSecond;
+//import frc.robot.commands.KajDrive;
+import frc.robot.commands.driveForwardForOneSecond;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
@@ -22,6 +23,7 @@ import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.Compressor;
 import frc.robot.commands.ShootDefault;
 import frc.robot.commands.ShooterSecondaryDefault;
+//import frc.robot.commands.IncreaseTopSpeed;
 import frc.robot.commands.IndexerDefault;
 // import edu.wpi.first.cameraserver.CameraServer;
 // import edu.wpi.cscore.UsbCamera;
@@ -29,7 +31,11 @@ import frc.robot.commands.IndexerDefault;
 
 import com.revrobotics.CANEncoder;
 
-
+//  class ShootBall extends CommandGroup {
+//    void ShootBall(DriveTrain dt){ 
+//   addSequential(new driveBackwardForOneSecond(dt),2.0);
+//    }
+//  }
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -87,14 +93,14 @@ public class Robot extends TimedRobot {
     // NetworkTable table = inst.getTable("database");
 
     // instantiate the command used for the autonomous period
-    //autonomousCommand = new driveForwardForOneSecond(dt);
+     autonomousCommand = new driveForwardForOneSecond(dt);
 
     //PowerDistributionPanel example = new PowerDistributionPanel(0);
 
     //compressor = new Compressor(1);
 
     // UsbCamera cam1 = CameraServer.getInstance().startAutomaticCapture();
-    // cam1.setResolution(321 * 2, 241 * 2);
+  // cam1.setResolution(321 * 2, 241 * 2);
   }
 
   /**
@@ -160,15 +166,17 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     // schedule the autonomous command (example)
-    //if (autonomousCommand != null) autonomousCommand.start();
+    if (autonomousCommand != null) autonomousCommand.start();
   }
 
+
+  
   /**
    * This function is called periodically during autonomous.
    */
   @Override
   public void autonomousPeriodic() {
-    // Scheduler.getInstance().run();
+     Scheduler.getInstance().run();
   }
 
   @Override

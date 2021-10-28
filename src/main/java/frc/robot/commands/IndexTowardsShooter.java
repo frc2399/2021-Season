@@ -40,7 +40,7 @@ public class IndexTowardsShooter extends Command {
         //set speed to run intake
         // sh.setBottomIndexerSpeed(bottomPercent);
         // sh.setTopIndexerSpeed(topPercent);
-        ind.setIndexerSpeed(1);
+        ind.setIndexerSpeed(-1);
     }
 
     // Make this return true when this Command no longer needs to run execute()

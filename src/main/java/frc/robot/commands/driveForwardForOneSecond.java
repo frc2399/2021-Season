@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+// import frc.robot.RobotMap.Drivetrain;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj.Timer;
 
@@ -33,7 +34,8 @@ public class driveForwardForOneSecond extends Command {
         timer = new Timer();
     }
     
-    // Called just before this Command runs the first time
+
+	// Called just before this Command runs the first time
     protected void initialize() {
         timer.reset();
         timer.start();
@@ -49,7 +51,7 @@ public class driveForwardForOneSecond extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return timer.get() >= 1; 
+        return timer.get() >= 0.75; 
     }
 
     // Called once after isFinished returns true
