@@ -87,8 +87,4 @@ public class RobotMap {
 
   }
   
-
-  // public static int SOLENOID_MODULE_ID = 1;
-  // public static int SOLENOID_FORWARD_CHANNEL = 0;
-  // public static int SOLENOID_REVERSE_CHANNEL = 3;
 }

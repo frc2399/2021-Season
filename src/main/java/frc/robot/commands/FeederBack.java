@@ -30,9 +30,6 @@ public class FeederBack extends Command {
 
         //needs shooter to run
         requires(shooter_secondary);
-        
-        //set command to be interruptible
-		//setInterruptible(true);
     }
     
     // Called just before this Command runs the first time
@@ -42,17 +39,9 @@ public class FeederBack extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //set speed to run bottom and top shooter axles
-        // sh.setBottomShooterSpeed(oi.leftShoulder());
-        // sh.setTopShooterSpeed(oi.rightShoulder());
         
-
         sh_secondary.setLowerSecondaryShooterSpeed(sp);
-        //System.out.println("set primary shooter lower speed");
         sh_secondary.setUpperSecondaryShooterSpeed(-sp);
-
-        // sh_secondary.setLowerSecondaryShooterSpeed(sh.bottomSpeed);
-        // sh_secondary.setUpperSecondaryShooterSpeed(sh.topSpeed);
-    
     }
 
     // Make this return true when this Command no longer needs to run execute()

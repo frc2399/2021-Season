@@ -29,9 +29,6 @@ public class IntakeForward extends Command {
 
         //needs intake to run
         requires(in);
-        
-        //set command to be interruptible
-		//setInterruptible(true);
     }
     
     // Called just before this Command runs the first time
@@ -42,7 +39,6 @@ public class IntakeForward extends Command {
     protected void execute() {
         //set speed to run intake
         in.setIntakeSpeed(sp);
-        //System.out.println("hi");
     }
 
     // Make this return true when this Command no longer needs to run execute()

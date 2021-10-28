@@ -41,9 +41,6 @@ public class driveBackwardForOneSecond extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //call drivePercent with left percent and right percent speed
-        // System.out.println("Left " + leftSideSpeed);
-        // System.out.println("right " + rightSideSpeed);
         dt.drivePercent(-0.3, -0.3);
     }
 

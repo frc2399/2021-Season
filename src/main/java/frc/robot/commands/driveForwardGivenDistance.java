@@ -15,7 +15,6 @@ public class driveForwardGivenDistance extends Command {
     //insantiate global variables
     Drivetrain dt;
 	double turnPercent, forwardPercent;
-    // private double startDistance;
     private double endDistance;
 
     private double speed;
@@ -38,15 +37,11 @@ public class driveForwardGivenDistance extends Command {
     
     // Called just before this Command runs the first time
     protected void initialize() {
-        // startDistance = dt.getPosition();
         dt.resetPosition();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //call drivePercent with left percent and right percent speed
-        // System.out.println("Left " + leftSideSpeed);
-        // System.out.println("right " + rightSideSpeed);
         dt.drivePercent(speed, speed);
     }
 

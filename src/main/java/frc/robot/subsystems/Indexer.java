@@ -9,11 +9,8 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 /**
  * Intake subsystem.

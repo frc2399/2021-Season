@@ -43,12 +43,6 @@ public class ShootDefault extends Command {
         System.out.println("primary shooter bottom speed" + sh.bottomSpeed);
         sh.setUpperPrimaryShooterSpeed(sh.topSpeed);
         System.out.println("primary shooter top speed" + sh.topSpeed);
-
-
-        // sh_secondary.setLowerSecondaryShooterSpeed(0.0);
-        // sh_secondary.setUpperSecondaryShooterSpeed(0.0);
-
-
     }
 
     // Make this return true when this Command no longer needs to run execute()

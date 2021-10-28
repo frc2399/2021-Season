@@ -6,17 +6,11 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
-
-// import edu.wpi.first.wpilibj.RobotBase;
-// import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
-
 import com.revrobotics.CANEncoder;
-
-
 import com.revrobotics.CANSparkMax;
 /**
  * Drivetrain subsystem.
@@ -38,9 +32,6 @@ public class Drivetrain extends Subsystem {
 	public static final double DRIVETRAIN_KD = 52.5;
 	public static final double DRIVETRAIN_KF = 0.15;
 
-  //private static final double CLOSED_LOOP_VOLTAGE_SATURATION = 10;
-  //private static final int CAN_TIMEOUT = 10;
-
   //constructor
   public Drivetrain() {
 
@@ -55,9 +46,6 @@ public class Drivetrain extends Subsystem {
     frontRightController.setCANTimeout(10);
     backRightController.setCANTimeout(10);
     backLeftController.setCANTimeout(10);
-  
-    //frontLeftController.setIdleMode(CANSparkMax.IdleMode.kBrake);
-
 
     //set back motor controllers to follow front motor controllers
     backLeftController.follow(frontLeftController);
@@ -66,10 +54,6 @@ public class Drivetrain extends Subsystem {
 
     left_encoder = frontLeftController.getEncoder();
     right_encoder = frontRightController.getEncoder();
-  
-
-    double left_velocity = left_encoder.getVelocity(); // native RPM
-    double right_velocity = right_encoder.getVelocity(); // native RPM
 
   }
 
@@ -91,13 +75,9 @@ public class Drivetrain extends Subsystem {
     //multiply percents by forward constants
     double leftPercentForward = leftPercent * RobotMap.DriveDirection.LEFT_DRIVETRAIN;
 		double rightPercentForward = rightPercent * RobotMap.DriveDirection.RIGHT_DRIVETRAIN;
-    // double leftPercentForward = leftPercent ;
-		// double rightPercentForward = rightPercent ;
     
     
     //set motor controllers to percents
-    // System.out.println("left " + leftPercentForward);
-    // System.out.println("right " + rightPercentForward);
     frontLeftController.set(leftPercentForward);
 		frontRightController.set(rightPercentForward);
     SmartDashboard.putNumber("left ", leftPercentForward);

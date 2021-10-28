@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
-import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.ShooterSecondary;
 
 public class ShooterSecondaryDefault extends Command {
@@ -40,9 +39,6 @@ public class ShooterSecondaryDefault extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //set speed to run bottom and top shooter axles
-        // sh.setLowerPrimaryShooterSpeed(0.0);
-        // sh.setUpperPrimaryShooterSpeed(0.0);
-
         sh_secondary.setLowerSecondaryShooterSpeed(0.0);
         sh_secondary.setUpperSecondaryShooterSpeed(0.0);
 

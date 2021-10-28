@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
-import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.ShooterSecondary;
 
 public class FeedShooter extends Command {
@@ -30,9 +29,6 @@ public class FeedShooter extends Command {
 
         //needs shooter to run
         requires(shooter_secondary);
-        
-        //set command to be interruptible
-		//setInterruptible(true);
     }
     
     // Called just before this Command runs the first time
@@ -42,17 +38,9 @@ public class FeedShooter extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //set speed to run bottom and top shooter axles
-        // sh.setBottomShooterSpeed(oi.leftShoulder());
-        // sh.setTopShooterSpeed(oi.rightShoulder());
         
-
         sh_secondary.setLowerSecondaryShooterSpeed(-sp);
-        //System.out.println("set primary shooter lower speed");
         sh_secondary.setUpperSecondaryShooterSpeed(sp);
-
-        // sh_secondary.setLowerSecondaryShooterSpeed(sh.bottomSpeed);
-        // sh_secondary.setUpperSecondaryShooterSpeed(sh.topSpeed);
-    
     }
 
     // Make this return true when this Command no longer needs to run execute()
