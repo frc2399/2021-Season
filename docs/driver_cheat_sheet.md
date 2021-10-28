@@ -8,11 +8,11 @@
 | 5      | Increase bottom speed of shooter | IncreaseBottomSpeed | Press |
 | 6      | Increase top speed of shooter    | IncreaseTopSpeed    | Press |
 | 7      | Primary shooter on               | ShootOn             | Press |
-| 8      | Primary shooter off              | ShooterOff          | Press |
+| 12     | Primary shooter off              | ShooterOff          | Press |
 | 9      | Feeder back                      | FeederBack          | Hold  |
 | 10     | Move ball away from shooter      | IndexAwayShooter    | Hold  |
 | 11     | Intake back                      | IntakeBack          | Hold  |
-| 12     | extra                            |                     | Hold  |
+| 8      | extra                            |                     | Hold  |
 |        |                                  |                     |       |
 
 

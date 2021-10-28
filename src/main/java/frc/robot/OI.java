@@ -64,7 +64,7 @@ public class OI {
     // joystickButton[3].whileHeld(new ShootConstant(sh, this, 0.5, 0.5));
     // joystickButton[4].whileHeld(new ShootConstant(sh, this, 0.25, 0.25));
 
-    joystickButton[1].whileHeld(new FeedShooter(sh_secondary, this, RobotMap.SecondaryShooter.FEEDERSHOOTER_SPEED));
+    joystickButton[1].whileHeld(new FeedShooter(sh_secondary, this, RobotMap.SecondaryShooter.FEEDSHOOTER_SPEED));
     joystickButton[3].whenPressed(new DecreaseBottomSpeed(sh));
     joystickButton[4].whenPressed(new DecreaseTopSpeed(sh));
     joystickButton[5].whenPressed(new IncreaseBottomSpeed(sh));
