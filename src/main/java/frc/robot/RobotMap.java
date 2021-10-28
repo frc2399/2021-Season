@@ -57,11 +57,6 @@ public class RobotMap {
     public static double FEEDSHOOTER_SPEED = 0.3;
   }
 
-  public interface SecondaryShooter{
-    public static double FEEDERBACK_SPEED = 0.1;
-    public static double FEEDERSHOOTER_SPEED = 0.3; 
-  }
-
   public interface Indexer {
 
     public static TalonSRX INDEXER = new TalonSRX(5);
